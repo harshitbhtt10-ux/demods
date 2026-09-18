@@ -5,93 +5,101 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <!-- Scaled Safe Zone Circular Logo Badge (54dp Radius centered at 54, 54) -->
+    <path
+        android:fillColor="#0066FF"
+        android:pathData="M 54,18 A 36,36 0 1,1 53.9,18 Z" />
+
+    <!-- Top Glossy Reflection Arc -->
+    <path
+        android:fillColor="#22FFFFFF"
+        android:pathData="M 54,18 A 36,36 0 0,1 90,54 C 70,46 38,62 18,54 A 36,36 0 0,1 54,18 Z" />
+
     <!-- Blue Outer Swoosh Arc -->
     <path
-        android:fillColor="#00C8FF"
-        android:pathData="M 32,58 C 26,46 36,36 50,34 C 40,40 34,50 38,58 C 42,62 50,64 62,64 C 48,66 36,64 32,58 Z" />
+        android:fillColor="#00D0FF"
+        android:pathData="M 31,59 C 26,49 34,41 44,39 C 37,44 32,52 35,59 C 37,62 43,64 51,64 C 42,66 34,64 31,59 Z" />
 
-    <!-- Main Store Frame White/Navy -->
+    <!-- Main Store Frame Dark Navy Blue -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M 38,26 L 70,26 A 6,6 0 0 1 76,32 L 76,60 A 6,6 0 0 1 70,66 L 38,66 A 6,6 0 0 1 32,60 L 32,32 A 6,6 0 0 1 38,26 Z" />
+        android:fillColor="#061840"
+        android:pathData="M 39,33 L 69,33 A 4,4 0 0 1 73,37 L 73,65 A 4,4 0 0 1 69,69 L 39,69 A 4,4 0 0 1 35,65 L 35,37 A 4,4 0 0 1 39,33 Z" />
 
-    <!-- Inner Card Surface Light Blue -->
+    <!-- Inner Card Light Blue Surface -->
     <path
-        android:fillColor="#EBF5FF"
-        android:pathData="M 40,34 L 68,34 A 4,4 0 0 1 72,38 L 72,58 A 4,4 0 0 1 68,62 L 40,62 A 4,4 0 0 1 36,58 L 36,38 A 4,4 0 0 1 40,34 Z" />
+        android:fillColor="#ECF5FF"
+        android:pathData="M 41,40 L 67,40 A 3,3 0 0 1 70,43 L 70,62 A 3,3 0 0 1 67,65 L 41,65 A 3,3 0 0 1 38,62 L 38,43 A 3,3 0 0 1 41,40 Z" />
 
-    <!-- Card List Lines -->
+    <!-- Card List Bullet Points & Lines -->
     <path
-        android:fillColor="#0B2253"
-        android:pathData="M 41,40 A 2,2 0 1 1 41,44 A 2,2 0 1 1 41,40 Z" />
+        android:fillColor="#061840"
+        android:pathData="M 43,45 A 1.5,1.5 0 1 1 43,48 A 1.5,1.5 0 1 1 43,45 Z" />
     <path
-        android:fillColor="#0B2253"
-        android:pathData="M 46,41 L 64,41 A 1.5,1.5 0 0 1 64,44 L 46,44 A 1.5,1.5 0 0 1 46,41 Z" />
+        android:fillColor="#061840"
+        android:pathData="M 47,45.5 L 65,45.5 A 1,1 0 0 1 65,47.5 L 47,47.5 A 1,1 0 0 1 47,45.5 Z" />
 
     <path
-        android:fillColor="#0B2253"
-        android:pathData="M 41,48 A 2,2 0 1 1 41,52 A 2,2 0 1 1 41,48 Z" />
+        android:fillColor="#061840"
+        android:pathData="M 43,51 A 1.5,1.5 0 1 1 43,54 A 1.5,1.5 0 1 1 43,51 Z" />
     <path
-        android:fillColor="#0B2253"
-        android:pathData="M 46,49 L 60,49 A 1.5,1.5 0 0 1 60,52 L 46,52 A 1.5,1.5 0 0 1 46,49 Z" />
+        android:fillColor="#061840"
+        android:pathData="M 47,51.5 L 61,51.5 A 1,1 0 0 1 61,53.5 L 47,53.5 A 1,1 0 0 1 47,51.5 Z" />
 
-    <!-- Store Canopy Roof (Striped Cyan/Blue) -->
+    <!-- Store Canopy Roof (Striped Blue & Cyan) -->
     <path
-        android:fillColor="#0096FF"
-        android:pathData="M 32,22 C 32,15 42,10 54,10 C 66,10 76,15 76,22 L 76,26 L 32,26 Z" />
+        android:fillColor="#006EFF"
+        android:pathData="M 34,31 C 34,24 42,21 54,21 C 66,21 74,24 74,31 L 74,33 L 34,33 Z" />
     <path
-        android:fillColor="#00E1FF"
-        android:pathData="M 40,11 L 48,11 L 46,26 L 38,26 Z M 54,10 L 62,11 L 60,26 L 52,26 Z M 70,14 L 75,18 L 73,26 L 66,26 Z" />
+        android:fillColor="#00D2FF"
+        android:pathData="M 41,22 L 48,22 L 45,33 L 39,33 Z M 54,21 L 61,22 L 58,33 L 52,33 Z M 67,24 L 73,27 L 70,33 L 64,33 Z" />
 
     <!-- Canopy Scallop Roof Trim -->
     <path
         android:fillColor="#0080FF"
-        android:pathData="M 32,26 A 4.4,4.4 0 0 0 40.8,26 A 4.4,4.4 0 0 0 49.6,26 A 4.4,4.4 0 0 0 58.4,26 A 4.4,4.4 0 0 0 67.2,26 A 4.4,4.4 0 0 0 76,26 Z" />
+        android:pathData="M 34,33 A 4,4 0 0 0 42,33 A 4,4 0 0 0 50,33 A 4,4 0 0 0 58,33 A 4,4 0 0 0 66,33 A 4,4 0 0 0 74,33 Z" />
 
-    <!-- Mic Voice Circle Badge (Bottom Right) -->
+    <!-- Mic Circle Badge (Bottom Right) -->
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 65,58 A 11,11 0 1 1 65,58.01 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 64,52 A 13,13 0 1 1 64,52.01 Z" />
+        android:pathData="M 65,58 A 9.5,9.5 0 1 1 65,58.01 Z" />
     <path
-        android:fillColor="#0077FF"
-        android:pathData="M 64,52 A 11,11 0 1 1 64,52.01 Z" />
-    <!-- Mic Body White -->
+        android:fillColor="#006EFF"
+        android:pathData="M 65,58 A 8.5,8.5 0 1 1 65,58.01 Z" />
+
+    <!-- Mic Body Inside Badge -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 62.5,46 A 2.5,2.5 0 0 1 67.5,46 L 67.5,52 A 2.5,2.5 0 0 1 62.5,52 Z" />
+        android:pathData="M 63,53 A 2,2 0 0 1 67,53 L 67,58 A 2,2 0 0 1 63,58 Z" />
     <path
         android:fillColor="#00000000"
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="1.8"
-        android:pathData="M 60.5,51 A 4.5,4.5 0 0 0 69.5,51 M 65,55 L 65,58 M 62,58 L 68,58" />
+        android:strokeWidth="1.2"
+        android:pathData="M 61,57 A 4,4 0 0 0 69,57 M 65,61 L 65,63 M 62.5,63 L 67.5,63" />
 
-    <!-- Brand Text "DukaanSetu" at bottom of launcher icon -->
-    <!-- "Dukaan" Text Path White -->
+    <!-- "DukaanSetu" Text -->
+    <!-- "Dukaan" White Text -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 22,76 L 26,76 C 29,76 31,78 31,81 C 31,84 29,86 26,86 L 22,86 Z M 24,78 L 24,84 L 26,84 C 27.5,84 29,83 29,81 C 29,79 27.5,78 26,78 Z" />
+        android:pathData="M 28,71 L 32,71 C 35,71 37,73 37,76 C 37,79 35,81 32,81 L 28,81 Z M 30,73 L 30,79 L 32,79 C 33.5,79 35,78 35,76 C 35,74 33.5,73 32,73 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 33,80 L 35,80 L 35,84 C 35,85.5 36,86.2 37.5,86.2 C 39,86.2 40,85.5 40,84 L 40,80 L 42,80 L 42,84 C 42,87 40,88 37.5,88 C 35,88 33,87 33,84 Z" />
+        android:pathData="M 39,75 L 41.5,75 L 41.5,79 C 41.5,80.5 42.5,81 43.5,81 C 44.5,81 45.5,80.5 45.5,79 L 45.5,75 L 48,75 L 48,79 C 48,82 46,83 43.5,83 C 41,83 39,82 39,79 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 44,76 L 46,76 L 46,81 L 50,76 L 53,76 L 49,81 L 53,88 L 50,88 L 46,82 L 46,88 L 44,88 Z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M 55,83 C 55,80.5 56.5,79.5 59,79.5 C 61.5,79.5 63,80.5 63,83 L 63,88 L 61,88 L 61,86.8 C 60.5,87.6 59.5,88 58.5,88 C 56.5,88 55,86.8 55,84.8 Z M 61,83.5 L 61,83 C 61,81.8 60.2,81 59,81 C 57.8,81 57,81.8 57,83 C 57,84.2 57.8,85 59,85 C 60.2,85 61,84.2 61,83.5 Z" />
+        android:pathData="M 50,71 L 52.5,71 L 52.5,75 L 56,71 L 59.5,71 L 55.5,76 L 60,83 L 57,83 L 53.5,77.5 L 52.5,80 L 52.5,83 L 50,83 Z" />
 
-    <!-- "Setu" Text Path Bright Cyan -->
+    <!-- "Setu" Cyan Text -->
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 66,86.5 C 66.5,87.4 67.5,88 68.8,88 C 70.5,88 71.5,87 71.5,85.8 C 71.5,84 69.2,83.5 68.5,83 C 67.5,82.2 67,81.5 67,80.5 C 67,79 68.2,78 69.8,78 C 71,78 72,78.6 72.5,79.5 L 71,80.5 C 70.6,79.8 70.2,79.5 69.5,79.5 C 68.8,79.5 68.2,80 68.2,80.7 C 68.2,81.4 68.8,81.8 69.8,82.2 C 71.2,82.8 72.8,83.5 72.8,85.5 C 72.8,87.2 71.2,88.5 69,88.5 C 67.5,88.5 66.2,87.8 65.5,86.5 Z" />
+        android:pathData="M 62,80 C 62.5,81.5 63.5,82.5 65.5,82.5 C 67.5,82.5 68.5,81.5 68.5,80 C 68.5,78 66,77.5 65,77 C 63.5,76 62.5,75 62.5,73.5 C 62.5,72 64,71 66,71 C 68,71 69.5,72 70,73 L 68,74 C 67.5,73 67,72.5 66,72.5 C 65,72.5 64.2,73 64.2,73.5 C 64.2,74.2 65,74.5 66,75 C 68,76 71.5,76.8 71.5,79.8 C 71.5,82 69,83.5 65.5,83.5 C 63,83.5 61.5,82 61,80 Z" />
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 74,83 C 74,80 75.8,78 78.5,78 C 81.2,78 82.8,80 82.8,83.2 L 82.8,83.8 L 76,83.8 C 76.2,85.5 77.2,86.5 78.8,86.5 C 80,86.5 80.8,85.8 81.2,85 L 82.6,85.8 C 82,87.5 80.5,88.5 78.5,88.5 C 75.8,88.5 74,86 74,83 Z M 76,82.2 L 81,82.2 C 80.8,81 79.8,79.5 78.5,79.5 C 77.2,79.5 76.2,81 76,82.2 Z" />
+        android:pathData="M 73,77 C 73,74 75,72 78.5,72 C 82,72 84,74 84,77.5 L 84,78 L 75.5,78 C 75.8,80 77,81.5 79,81.5 C 80.5,81.5 81.8,80.8 82.2,79.8 L 84.2,80.5 C 83.2,82.5 81,83.5 78.5,83.5 C 75,83.5 73,81 73,77 Z M 75.5,76 L 81.5,76 C 81.2,74.5 80,73.2 78.5,73.2 C 77,73.2 75.8,74.5 75.5,76 Z" />
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M 85,76 L 87,76 L 87,79.5 L 89.5,79.5 L 89.5,81 L 87,81 L 87,85.5 C 87,86.2 87.4,86.6 88.2,86.6 L 89.5,86.6 L 89.5,88 L 87.8,88 C 85.8,88 85,87 85,85.2 L 85,81 L 83.5,81 L 83.5,79.5 L 85,79.5 Z" />
-    <path
-        android:fillColor="#00E5FF"
-        android:pathData="M 91,80 L 93,80 L 93,84 C 93,85.5 94,86.2 95.5,86.2 C 97,86.2 98,85.5 98,84 L 98,80 L 100,80 L 100,84 C 100,87 98,88 95.5,88 C 93,88 91,87 91,84 Z" />
+        android:pathData="M 86,69 L 88.5,69 L 88.5,72 L 91,72 L 91,74 L 88.5,74 L 88.5,79.5 C 88.5,80.5 89,81 90,81 L 91.5,81 L 91.5,83 L 89.5,83 C 87.5,83 86,82 86,79.5 L 86,74 L 84.5,74 L 84.5,72 L 86,72 Z" />
 
 </vector>
