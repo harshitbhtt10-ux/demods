@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Outer Squircle Rounded Background -->
+    <path
+        android:fillColor="#0066FF"
+        android:pathData="M 40,10 L 160,10 A 32,32 0 0 1 192,42 L 192,158 A 32,32 0 0 1 160,190 L 40,190 A 32,32 0 0 1 8,158 L 8,42 A 32,32 0 0 1 40,10 Z" />
+
+    <!-- Top Diagonal Glass Reflection Overlay -->
+    <path
+        android:fillColor="#22FFFFFF"
+        android:pathData="M 40,10 L 160,10 A 32,32 0 0 1 192,42 L 192,80 L 10,140 L 8,42 A 32,32 0 0 1 40,10 Z" />
+
+    <!-- Blue Outer Swoosh Arc -->
+    <path
+        android:fillColor="#00D0FF"
+        android:pathData="M 42,112 C 30,88 50,68 76,64 C 58,76 46,96 52,112 C 58,121 72,125 94,125 C 70,129 50,125 42,112 Z" />
+
+    <!-- Main Store Frame Dark Navy Blue -->
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 62,48 L 128,48 A 10,10 0 0 1 138,58 L 138,116 A 10,10 0 0 1 128,126 L 62,126 A 10,10 0 0 1 52,116 L 52,58 A 10,10 0 0 1 62,48 Z" />
+
+    <!-- Inner Card Light Blue Surface -->
+    <path
+        android:fillColor="#ECF5FF"
+        android:pathData="M 68,64 L 122,64 A 8,8 0 0 1 130,72 L 130,112 A 8,8 0 0 1 122,120 L 68,120 A 8,8 0 0 1 60,112 L 60,72 A 8,8 0 0 1 68,64 Z" />
+
+    <!-- Card List Bullet Points & Lines -->
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 72,76 A 3.5,3.5 0 1 1 72,83 A 3.5,3.5 0 1 1 72,76 Z" />
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 82,77 L 118,77 A 3,3 0 0 1 118,82 L 82,82 A 3,3 0 0 1 82,77 Z" />
+
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 72,91 A 3.5,3.5 0 1 1 72,98 A 3.5,3.5 0 1 1 72,91 Z" />
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 82,92 L 110,92 A 3,3 0 0 1 110,97 L 82,97 A 3,3 0 0 1 82,92 Z" />
+
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 72,106 A 3.5,3.5 0 1 1 72,113 A 3.5,3.5 0 1 1 72,106 Z" />
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 82,107 L 102,107 A 3,3 0 0 1 102,112 L 82,112 A 3,3 0 0 1 82,107 Z" />
+
+    <!-- Store Canopy Roof (Striped Blue & Cyan) -->
+    <path
+        android:fillColor="#006EFF"
+        android:pathData="M 50,42 C 50,26 70,18 100,18 C 130,18 150,26 150,42 L 150,48 L 50,48 Z" />
+    <path
+        android:fillColor="#00D2FF"
+        android:pathData="M 68,20 L 86,20 L 80,48 L 62,48 Z M 100,18 L 118,20 L 112,48 L 94,48 Z M 132,24 L 148,32 L 142,48 L 126,48 Z" />
+
+    <!-- Canopy Scallop Roof Trim -->
+    <path
+        android:fillColor="#0080FF"
+        android:pathData="M 50,48 A 8.3,8.3 0 0 0 66.6,48 A 8.3,8.3 0 0 0 83.2,48 A 8.3,8.3 0 0 0 99.8,48 A 8.3,8.3 0 0 0 116.4,48 A 8.3,8.3 0 0 0 133,48 A 8.3,8.3 0 0 0 149.6,48 Z" />
+
+    <!-- Mic Circle Badge -->
+    <path
+        android:fillColor="#061840"
+        android:pathData="M 128,104 A 25,25 0 1 1 128,104.01 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 128,104 A 22,22 0 1 1 128,104.01 Z" />
+    <path
+        android:fillColor="#006EFF"
+        android:pathData="M 128,104 A 19.5,19.5 0 1 1 128,104.01 Z" />
+
+    <!-- Mic Sound Emission Rays -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 152,80 L 162,70 A 2.5,2.5 0 0 1 165,73 L 155,83 A 2.5,2.5 0 0 1 152,80 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 158,93 L 172,91 A 2.5,2.5 0 0 1 173,95 L 159,97 A 2.5,2.5 0 0 1 158,93 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 156,106 L 168,112 A 2.5,2.5 0 0 1 166,116 L 154,110 A 2.5,2.5 0 0 1 156,106 Z" />
+
+    <!-- Mic Body Inside Badge -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 123,92 A 5,5 0 0 1 133,92 L 133,104 A 5,5 0 0 1 123,104 Z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:pathData="M 119,101 A 9,9 0 0 0 137,101 M 128,110 L 128,116 M 122,116 L 134,116" />
+
+    <!-- "DukaanSetu" Text -->
+    <!-- "Dukaan" White Text -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 28,140 L 38,140 C 45,140 50,145 50,152 C 50,159 45,164 38,164 L 28,164 Z M 34,145 L 34,159 L 38,159 C 42,159 44,156 44,152 C 44,148 42,145 38,145 Z" />
+
+    <!-- Leaf Accent Inside D -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 32,152 C 32,148 36,146 40,152 C 40,156 36,158 32,152 Z" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 52,150 L 57,150 L 57,158 C 57,161 59,162.5 61.5,162.5 C 64,162.5 66,161 66,158 L 66,150 L 71,150 L 71,158 C 71,163 67,166 61.5,166 C 56,166 52,163 52,158 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 74,140 L 79,140 L 79,150 L 88,140 L 95,140 L 87,150 L 96,164 L 89,164 L 82,153 L 79,160 L 79,164 L 74,164 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 98,155 C 98,151 101,149 106,149 C 111,149 114,151 114,155 L 114,164 L 109,164 L 109,161 C 108,163 106,165 103,165 C 99,165 98,162 98,158 Z M 109,155 C 109,153 107,152 105,152 C 103,152 101,153 101,155 C 101,157 103,158 105,158 C 107,158 109,157 109,155 Z" />
+
+    <!-- "Setu" Cyan Text -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 120,161 C 121,163 123,165 126,165 C 129,165 131,163 131,161 C 131,158 127,157 125,156 C 122,155 120,153 120,150 C 120,147 123,145 126.5,145 C 130,145 132,147 133,149 L 129,151 C 128.5,149.5 127.5,149 126.5,149 C 125,149 124,149.8 124,150.5 C 124,151.5 125,152 127,152.5 C 129.5,153.5 135,154.5 135,160.5 C 135,164 131.5,166 126.5,166 C 122,166 119.5,163 119,161 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 138,155 C 138,149 142,145 148,145 C 154,145 157.5,149 157.5,155.5 L 157.5,157 L 143,157 C 143.5,160.5 145.5,162.5 148.5,162.5 C 151,162.5 153,161 154,159.5 L 158,161 C 156.5,164 153,166 148.5,166 C 142,166 138,161 138,155 Z M 143,153.5 L 153,153.5 C 152.5,151 151,148.5 148,148.5 C 145,148.5 143.5,151 143,153.5 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 160,140 L 165,140 L 165,146 L 170,146 L 170,150 L 165,150 L 165,159 C 165,160.5 166,161.5 167.5,161.5 L 170,161.5 L 170,165 L 166,165 C 162,165 160,163 160,159 L 160,150 L 157,150 L 157,146 L 160,146 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M 173,150 L 178,150 L 178,158 C 178,161 180,162.5 182.5,162.5 C 185,162.5 187,161 187,158 L 187,150 L 192,150 L 192,158 C 192,163 188,166 182.5,166 C 177,166 173,163 173,158 Z" />
+
+</vector>
