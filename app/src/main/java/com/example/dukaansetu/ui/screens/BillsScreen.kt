@@ -137,8 +137,8 @@ fun BillsScreen(
         // Create New Bill FAB
         FloatingActionButton(
             onClick = onNavigateToAddItem,
-            containerColor = PrimaryBlue,
-            contentColor = MaterialTheme.colorScheme.surface,
+            containerColor = NavyPrimary,
+            contentColor = Color.White,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .align(Alignment.BottomEnd)

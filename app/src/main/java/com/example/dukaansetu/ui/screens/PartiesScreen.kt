@@ -152,8 +152,8 @@ fun PartiesScreen(
         // Add Customer FAB
         FloatingActionButton(
             onClick = onNavigateToAddParty,
-            containerColor = PrimaryBlue,
-            contentColor = MaterialTheme.colorScheme.surface,
+            containerColor = NavyPrimary,
+            contentColor = Color.White,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .align(Alignment.BottomEnd)

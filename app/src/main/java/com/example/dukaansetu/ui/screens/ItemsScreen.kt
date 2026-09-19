@@ -161,7 +161,7 @@ fun ItemsScreen(
         FloatingActionButton(
             onClick = onNavigateToAddItem,
             containerColor = NavyPrimary,
-            contentColor = MaterialTheme.colorScheme.surface,
+            contentColor = Color.White,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
