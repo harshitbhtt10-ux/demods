@@ -46,7 +46,7 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(Color.White)
             .statusBarsPadding()
             .navigationBarsPadding()
             .padding(24.dp)
