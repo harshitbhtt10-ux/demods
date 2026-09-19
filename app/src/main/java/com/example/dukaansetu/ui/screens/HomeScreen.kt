@@ -20,12 +20,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.example.dukaansetu.ui.components.DukaanSetuLogo
 import com.example.dukaansetu.ui.components.StatCard
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun HomeScreen(
+    viewModel: ShopViewModel,
     onNavigateToAi: () -> Unit,
     onNavigateToItems: () -> Unit,
     onNavigateToReports: () -> Unit,
@@ -37,6 +41,12 @@ fun HomeScreen(
     onNavigateToNotifications: () -> Unit,
     onNavigateToMore: () -> Unit
 ) {
+    val inventory by viewModel.inventory.collectAsState()
+    val parties by viewModel.parties.collectAsState()
+    val bills by viewModel.bills.collectAsState()
+    
+    val todaySales = bills.filter { it.date.contains("Today") }.sumOf { it.amount }
+    val totalPending = parties.sumOf { it.pendingAmount }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -141,7 +151,7 @@ fun HomeScreen(
             Row(modifier = Modifier.fillMaxWidth()) {
                 StatCard(
                     title = "Today's Sales",
-                    value = "₹ 5,320",
+                    value = "₹ ${todaySales.toInt()}",
                     changeText = "↑ 12%",
                     isPositive = true,
                     icon = Icons.Default.TrendingUp,
@@ -181,8 +191,8 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.width(12.dp))
                 StatCard(
                     title = "Pending Udhaar",
-                    value = "₹ 3,450",
-                    changeText = "12 customers",
+                    value = "₹ ${totalPending.toInt()}",
+                    changeText = "${parties.filter { it.pendingAmount > 0 }.size} customers",
                     isPositive = false,
                     icon = Icons.Default.Person,
                     iconBgColor = OrangeLight,

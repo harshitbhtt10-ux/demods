@@ -13,10 +13,13 @@ import com.example.dukaansetu.ui.components.DukaanSetuBottomBar
 import com.example.dukaansetu.ui.navigation.BottomTab
 import com.example.dukaansetu.ui.navigation.Screen
 import com.example.dukaansetu.ui.screens.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun DukaanSetuApp() {
+    val viewModel: ShopViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    
     var currentScreen by remember { mutableStateOf<Screen>(Screen.Splash) }
     var currentBottomTab by remember { mutableStateOf(BottomTab.HOME) }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -66,6 +69,7 @@ fun DukaanSetuApp() {
                         when (currentBottomTab) {
                             BottomTab.HOME -> {
                                 HomeScreen(
+                                    viewModel = viewModel,
                                     onNavigateToAi = { currentScreen = Screen.AiAssistant },
                                     onNavigateToItems = { currentBottomTab = BottomTab.ITEMS },
                                     onNavigateToReports = { currentScreen = Screen.Reports },
@@ -81,6 +85,7 @@ fun DukaanSetuApp() {
 
                             BottomTab.ITEMS -> {
                                 ItemsScreen(
+                                    viewModel = viewModel,
                                     onNavigateToAddItem = { currentScreen = Screen.AddItem },
                                     onNavigateToDeadStock = { currentScreen = Screen.DeadStock }
                                 )
@@ -88,12 +93,14 @@ fun DukaanSetuApp() {
 
                             BottomTab.BILLS -> {
                                 BillsScreen(
+                                    viewModel = viewModel,
                                     onNavigateToAddItem = { currentScreen = Screen.AddItem }
                                 )
                             }
 
                             BottomTab.PARTIES -> {
                                 PartiesScreen(
+                                    viewModel = viewModel,
                                     onNavigateToAddParty = { currentScreen = Screen.AddParty }
                                 )
                             }
@@ -115,6 +122,7 @@ fun DukaanSetuApp() {
 
                     Screen.AiAssistant -> {
                         AiAssistantScreen(
+                            viewModel = viewModel,
                             onBackClick = { currentScreen = Screen.Main }
                         )
                     }
@@ -163,6 +171,7 @@ fun DukaanSetuApp() {
 
                     Screen.AddParty -> {
                         AddPartyScreen(
+                            viewModel = viewModel,
                             onBackClick = { currentScreen = Screen.Main },
                             onPartyAdded = {
                                 currentScreen = Screen.Main
@@ -203,6 +212,7 @@ fun DukaanSetuApp() {
 
                     Screen.AddItem -> {
                         AddItemScreen(
+                            viewModel = viewModel,
                             onBackClick = { currentScreen = Screen.Main },
                             onItemAdded = {
                                 currentScreen = Screen.Main

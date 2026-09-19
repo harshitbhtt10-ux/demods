@@ -19,9 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun AddPartyScreen(
+    viewModel: ShopViewModel,
     onBackClick: () -> Unit,
     onPartyAdded: () -> Unit
 ) {
@@ -148,7 +150,17 @@ fun AddPartyScreen(
                     .padding(16.dp)
             ) {
                 Button(
-                    onClick = onPartyAdded,
+                    onClick = {
+                        val parsedPendingAmount = openingUdhaar.toDoubleOrNull() ?: 0.0
+                        viewModel.addParty(
+                            name = partyName,
+                            phone = mobileNumber,
+                            pendingAmount = parsedPendingAmount,
+                            address = address,
+                            type = if (isCustomer) "Customer" else "Supplier"
+                        )
+                        onPartyAdded()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = NavyPrimary),
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier

@@ -23,32 +23,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dukaansetu.data.model.PartyCustomer
 import com.example.dukaansetu.ui.theme.*
-
-data class PartyCustomer(
-    val id: String,
-    val name: String,
-    val phone: String,
-    val pendingAmount: Int,
-    val daysPending: Int
-)
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun PartiesScreen(
+    viewModel: ShopViewModel,
     onNavigateToAddParty: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var searchQuery by remember { mutableStateOf("") }
 
-    val customers = remember {
-        listOf(
-            PartyCustomer("1", "Priya Verma", "9876543210", 3450, 12),
-            PartyCustomer("2", "Rajesh Gupta", "9812345678", 1200, 5),
-            PartyCustomer("3", "Sunil Mehta", "9898989898", 850, 8),
-            PartyCustomer("4", "Anil Sharma", "9711223344", 2100, 15),
-            PartyCustomer("5", "Mohan Lal", "9654321098", 450, 3)
-        )
-    }
+    val customers by viewModel.parties.collectAsState()
 
     Box(
         modifier = Modifier
@@ -93,14 +80,15 @@ fun PartiesScreen(
                             Column {
                                 Text("Total Udhaar Pending", fontSize = 12.sp, color = Color.White.copy(alpha = 0.8f))
                                 Spacer(modifier = Modifier.height(4.dp))
-                                Text("₹ 8,050", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                                val totalPending = customers.sumOf { it.pendingAmount }
+                                Text("₹ ${totalPending.toInt()}", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color.White)
                             }
 
                             Surface(
                                 color = OrangeWarning,
                                 shape = RoundedCornerShape(8.dp)
                             ) {
-                                Text("5 Customers", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+                                Text("${customers.filter { it.pendingAmount > 0 }.size} Customers", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
                             }
                         }
                     }
@@ -237,7 +225,7 @@ private fun PartyCustomerCard(
 
             Column(horizontalAlignment = Alignment.End) {
                 Text(
-                    text = "₹ ${customer.pendingAmount}",
+                    text = "₹ ${customer.pendingAmount.toInt()}",
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = RedDanger

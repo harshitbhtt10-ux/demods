@@ -22,41 +22,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dukaansetu.data.model.InventoryItem
 import com.example.dukaansetu.ui.theme.*
-
-data class InventoryItem(
-    val id: String,
-    val name: String,
-    val qty: Int,
-    val price: Int,
-    val badge: String? = null,
-    val badgeColor: Color = RedDanger
-)
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun ItemsScreen(
+    viewModel: ShopViewModel,
     onNavigateToAddItem: () -> Unit,
     onNavigateToDeadStock: () -> Unit = {}
 ) {
     var searchQuery by remember { mutableStateOf("") }
     var selectedFilter by remember { mutableStateOf("All") }
 
-    val sampleItems = remember {
-        listOf(
-            InventoryItem("1", "Maggi Noodles", 50, 12),
-            InventoryItem("2", "Coca Cola 500ml", 20, 40),
-            InventoryItem("3", "Parle-G Biscuit", 4, 10, "Low Stock", RedDanger),
-            InventoryItem("4", "Aashirvaad Atta", 25, 320),
-            InventoryItem("5", "Dove Soap", 2, 45, "Low Stock", RedDanger),
-            InventoryItem("6", "Surf Excel 1kg", 18, 120),
-            InventoryItem("7", "Bournvita 500g", 50, 280, "Dead Stock", RedDanger)
-        )
-    }
+    val inventory by viewModel.inventory.collectAsState()
 
-    val filteredItems = sampleItems.filter { item ->
+    val filteredItems = inventory.filter { item ->
         val matchesSearch = item.name.contains(searchQuery, ignoreCase = true)
         val matchesFilter = when (selectedFilter) {
-            "Active" -> item.qty > 5
+            "Active" -> item.quantity > 5
             "Low Stock" -> item.badge == "Low Stock"
             "Dead Stock" -> item.badge == "Dead Stock"
             else -> true
@@ -245,20 +229,21 @@ private fun InventoryItemCard(
                 Spacer(modifier = Modifier.height(2.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "Qty: ${item.qty}",
+                        text = "Qty: ${item.quantity} ${item.unit}",
                         fontSize = 12.sp,
                         color = TextSecondary
                     )
 
                     if (item.badge != null) {
+                        val badgeColor = if (item.badge == "Low Stock") OrangeWarning else RedDanger
                         Spacer(modifier = Modifier.width(8.dp))
                         Surface(
-                            color = item.badgeColor.copy(alpha = 0.15f),
+                            color = badgeColor.copy(alpha = 0.15f),
                             shape = RoundedCornerShape(4.dp)
                         ) {
                             Text(
                                 text = item.badge,
-                                color = item.badgeColor,
+                                color = badgeColor,
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
@@ -269,7 +254,7 @@ private fun InventoryItemCard(
             }
 
             Text(
-                text = "₹ ${item.price}",
+                text = "₹ ${item.sellingPrice.toInt()}",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary

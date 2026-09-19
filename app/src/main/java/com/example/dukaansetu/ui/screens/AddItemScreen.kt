@@ -22,9 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun AddItemScreen(
+    viewModel: ShopViewModel,
     onBackClick: () -> Unit,
     onItemAdded: () -> Unit
 ) {
@@ -274,7 +276,21 @@ fun AddItemScreen(
                     .padding(16.dp)
             ) {
                 Button(
-                    onClick = onItemAdded,
+                    onClick = {
+                        val parsedPurchasePrice = purchasePrice.toDoubleOrNull() ?: 0.0
+                        val parsedSellingPrice = sellingPrice.toDoubleOrNull() ?: 0.0
+                        val parsedQuantity = quantity.toIntOrNull() ?: 0
+                        viewModel.addItem(
+                            name = itemName,
+                            category = category,
+                            purchasePrice = parsedPurchasePrice,
+                            sellingPrice = parsedSellingPrice,
+                            quantity = parsedQuantity,
+                            unit = unit,
+                            expiryDate = expiryDate
+                        )
+                        onItemAdded()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = NavyPrimary),
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier

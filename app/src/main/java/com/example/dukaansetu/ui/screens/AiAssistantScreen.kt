@@ -24,13 +24,17 @@ import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuLogo
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun AiAssistantScreen(
+    viewModel: ShopViewModel,
     onBackClick: () -> Unit
 ) {
     var isChatActive by remember { mutableStateOf(false) }
     var inputText by remember { mutableStateOf("") }
+    
+    val chatMessages by viewModel.chatMessages.collectAsState()
 
     Column(
         modifier = Modifier
@@ -74,11 +78,26 @@ fun AiAssistantScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    SuggestionCard("-> Aaj kitni sale hui?") { isChatActive = true }
-                    SuggestionCard("-> Sabse zyada kya bika?") { isChatActive = true }
-                    SuggestionCard("-> Kiska udhaar pending hai?") { isChatActive = true }
-                    SuggestionCard("-> Kaunsa stock mangwana chahiye?") { isChatActive = true }
-                    SuggestionCard("-> Koi slow moving item dikhao") { isChatActive = true }
+                    SuggestionCard("-> Aaj kitni sale hui?") { 
+                        viewModel.sendAiQuery("Aaj kitni sale hui?")
+                        isChatActive = true 
+                    }
+                    SuggestionCard("-> Sabse zyada kya bika?") { 
+                        viewModel.sendAiQuery("Sabse zyada kya bika?")
+                        isChatActive = true 
+                    }
+                    SuggestionCard("-> Kiska udhaar pending hai?") { 
+                        viewModel.sendAiQuery("Kiska udhaar pending hai?")
+                        isChatActive = true 
+                    }
+                    SuggestionCard("-> Kaunsa stock mangwana chahiye?") { 
+                        viewModel.sendAiQuery("Kaunsa stock mangwana chahiye?")
+                        isChatActive = true 
+                    }
+                    SuggestionCard("-> Koi slow moving item dikhao") { 
+                        viewModel.sendAiQuery("Koi slow moving item dikhao")
+                        isChatActive = true 
+                    }
                 }
 
                 Spacer(modifier = Modifier.weight(1f))
@@ -149,99 +168,75 @@ fun AiAssistantScreen(
                     .padding(16.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                // User Prompt Bubble
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    Surface(
-                        color = PrimaryBlue,
-                        shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 4.dp)
-                    ) {
-                        Text(
-                            text = "Aaj kitni sale hui?  🎙️",
-                            color = Color.White,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(12.dp)
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // AI Response Card
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
-                    shape = RoundedCornerShape(16.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "Aaj aapki total sale ₹ 5,320 hui, kal se 12% zyada.",
-                            fontSize = 14.sp,
-                            color = TextPrimary,
-                            lineHeight = 20.sp
-                        )
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        // Amount badge
-                        Surface(
-                            color = PrimaryBlue,
-                            shape = RoundedCornerShape(8.dp)
-                        ) {
-                            Text(
-                                text = "₹ 5,320",
-                                color = Color.White,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 14.sp,
-                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        // Sales Bar Chart Visual
-                        SalesBarChart()
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        Text(
-                            text = "Top Selling Items (Aaj)",
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextPrimary
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                        TopSellingItemRow("1", "Maggi Noodles", "42 pcs")
-                        TopSellingItemRow("2", "Coca Cola 500ml", "28 pcs")
-                        TopSellingItemRow("3", "Parle-G Biscuit", "20 pcs")
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
+                chatMessages.forEach { msg ->
+                    if (msg.isUser) {
+                        // User Prompt Bubble
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
                         ) {
-                            OutlinedButton(
-                                onClick = { },
-                                shape = RoundedCornerShape(8.dp),
-                                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
+                            Surface(
+                                color = PrimaryBlue,
+                                shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp, bottomStart = 16.dp, bottomEnd = 4.dp)
                             ) {
-                                Text("Aur details dikhao", fontSize = 11.sp, color = PrimaryBlue)
-                            }
-
-                            OutlinedButton(
-                                onClick = { },
-                                shape = RoundedCornerShape(8.dp),
-                                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
-                            ) {
-                                Text("Graph dikhao", fontSize = 11.sp, color = PrimaryBlue)
+                                Text(
+                                    text = msg.text,
+                                    color = Color.White,
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    modifier = Modifier.padding(12.dp)
+                                )
                             }
                         }
+                        Spacer(modifier = Modifier.height(16.dp))
+                    } else {
+                        // AI Response Card
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            shape = RoundedCornerShape(16.dp),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Column(modifier = Modifier.padding(16.dp)) {
+                                Text(
+                                    text = msg.text,
+                                    fontSize = 14.sp,
+                                    color = TextPrimary,
+                                    lineHeight = 20.sp
+                                )
+
+                                if (msg.amountBadge != null) {
+                                    Spacer(modifier = Modifier.height(12.dp))
+                                    Surface(
+                                        color = PrimaryBlue,
+                                        shape = RoundedCornerShape(8.dp)
+                                    ) {
+                                        Text(
+                                            text = msg.amountBadge,
+                                            color = Color.White,
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 14.sp,
+                                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                        )
+                                    }
+                                }
+
+                                if (msg.topItems.isNotEmpty()) {
+                                    Spacer(modifier = Modifier.height(16.dp))
+                                    Text(
+                                        text = "Top Items",
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = TextPrimary
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    msg.topItems.forEach { (name, qty) ->
+                                        TopSellingItemRow("", name, qty)
+                                    }
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
             }
@@ -274,7 +269,9 @@ fun AiAssistantScreen(
                     IconButton(
                         onClick = {
                             if (inputText.isNotEmpty()) {
+                                viewModel.sendAiQuery(inputText)
                                 inputText = ""
+                                isChatActive = true
                             }
                         },
                         modifier = Modifier

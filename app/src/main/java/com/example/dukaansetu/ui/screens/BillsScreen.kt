@@ -20,32 +20,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dukaansetu.data.model.BillRecord
 import com.example.dukaansetu.ui.theme.*
-
-data class BillRecord(
-    val id: String,
-    val customerName: String,
-    val billNo: String,
-    val date: String,
-    val amount: Int,
-    val status: String
-)
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun BillsScreen(
+    viewModel: ShopViewModel,
     onNavigateToAddItem: () -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
 
-    val billRecords = remember {
-        listOf(
-            BillRecord("1", "Ramesh Kumar", "INV-1024", "Today, 10:45 AM", 1250, "Paid"),
-            BillRecord("2", "Suresh Sharma", "INV-1023", "Today, 09:15 AM", 840, "Paid"),
-            BillRecord("3", "Priya Verma", "INV-1022", "11 Sep, 06:30 PM", 3450, "Udhaar"),
-            BillRecord("4", "Amit Patel", "INV-1021", "11 Sep, 02:10 PM", 620, "Paid"),
-            BillRecord("5", "Vikram Singh", "INV-1020", "10 Sep, 08:20 PM", 1890, "Paid")
-        )
-    }
+    val billRecords by viewModel.bills.collectAsState()
 
     Box(
         modifier = Modifier
@@ -109,17 +95,18 @@ fun BillsScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
+                        val todaysBills = billRecords.filter { it.date.contains("Today") }
                         Column {
                             Text("Today's Billed Amount", fontSize = 12.sp, color = Color.White.copy(alpha = 0.8f))
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text("₹ 2,090", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                            Text("₹ ${todaysBills.sumOf { it.amount }.toInt()}", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color.White)
                         }
 
                         Surface(
                             color = PrimaryBlue,
                             shape = RoundedCornerShape(10.dp)
                         ) {
-                            Text("5 Bills Created", fontSize = 12.sp, color = Color.White, modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp))
+                            Text("${todaysBills.size} Bills Created", fontSize = 12.sp, color = Color.White, modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp))
                         }
                     }
                 }
@@ -219,7 +206,7 @@ private fun BillRecordCard(bill: BillRecord) {
 
             Column(horizontalAlignment = Alignment.End) {
                 Text(
-                    text = "₹ ${bill.amount}",
+                    text = "₹ ${bill.amount.toInt()}",
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
