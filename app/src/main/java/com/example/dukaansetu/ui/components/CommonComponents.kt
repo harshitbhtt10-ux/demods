@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -31,8 +32,9 @@ fun DukaanSetuLogo(
     size: Int = 64
 ) {
     Image(
-        painter = painterResource(id = R.drawable.ic_dukaansetu_logo),
+        painter = painterResource(id = R.drawable.official_dukaansetu_logo),
         contentDescription = "DukaanSetu Logo",
+        contentScale = ContentScale.Fit,
         modifier = modifier
             .size(size.dp)
             .clip(CircleShape)
@@ -42,17 +44,18 @@ fun DukaanSetuLogo(
 @Composable
 fun DukaanSetuOfficialLogoHeader(
     modifier: Modifier = Modifier,
-    logoSize: Int = 130,
+    logoSize: Int = 140,
     isDarkBg: Boolean = false
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Official Circular Logo Graphic Badge
+        // Official PDF Extracted High-Res Logo Badge
         Image(
-            painter = painterResource(id = R.drawable.ic_dukaansetu_logo),
+            painter = painterResource(id = R.drawable.official_dukaansetu_logo),
             contentDescription = "DukaanSetu Official Logo",
+            contentScale = ContentScale.Fit,
             modifier = Modifier
                 .size(logoSize.dp)
                 .clip(CircleShape)
