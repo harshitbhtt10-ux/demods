@@ -68,7 +68,7 @@ fun DukaanSetuOfficialLogoHeader(
             text = "— Aapki Dukaan Ka Digital Saathi —",
             fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold,
-            color = if (isDarkBg) Color.White.copy(alpha = 0.9f) else TextSecondary
+            color = if (isDarkBg) MaterialTheme.colorScheme.surface.copy(alpha = 0.9f) else TextSecondary
         )
     }
 }
@@ -199,7 +199,7 @@ private fun BottomTabItem(
         Icon(
             imageVector = if (isSelected) selectedIcon else icon,
             contentDescription = tab.title,
-            tint = if (isSelected) Color.White else Color.White.copy(alpha = 0.6f),
+            tint = if (isSelected) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),
             modifier = Modifier.size(22.dp)
         )
         Spacer(modifier = Modifier.height(2.dp))
@@ -207,7 +207,7 @@ private fun BottomTabItem(
             text = tab.title,
             fontSize = 11.sp,
             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-            color = if (isSelected) Color.White else Color.White.copy(alpha = 0.6f)
+            color = if (isSelected) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f)
         )
     }
 }
@@ -225,7 +225,7 @@ fun StatCard(
     onClick: () -> Unit = {}
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = modifier.clickable { onClick() }
@@ -257,7 +257,7 @@ fun StatCard(
                     Text(
                         text = title,
                         fontSize = 11.sp,
-                        color = TextSecondary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -269,7 +269,7 @@ fun StatCard(
                 text = value,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextPrimary
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.height(2.dp))

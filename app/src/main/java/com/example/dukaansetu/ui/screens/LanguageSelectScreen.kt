@@ -49,7 +49,7 @@ fun LanguageSelectScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "Select Language",
@@ -66,7 +66,7 @@ fun LanguageSelectScreen(
             ) {
                 items(languages) { lang ->
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = Color.White),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                         shape = RoundedCornerShape(12.dp),
                         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                         modifier = Modifier
@@ -79,8 +79,8 @@ fun LanguageSelectScreen(
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Column {
-                                Text(text = lang.name, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
-                                Text(text = lang.nativeName, fontSize = 12.sp, color = TextSecondary)
+                                Text(text = lang.name, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
+                                Text(text = lang.nativeName, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
 
                             RadioButton(

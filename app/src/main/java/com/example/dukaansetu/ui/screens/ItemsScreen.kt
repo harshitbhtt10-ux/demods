@@ -51,7 +51,7 @@ fun ItemsScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -97,9 +97,12 @@ fun ItemsScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedContainerColor = Color.White,
-                        unfocusedContainerColor = Color.White,
-                        unfocusedBorderColor = Color(0xFFE2E8F0)
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = Color(0xFFE2E8F0),
                     )
                 )
 
@@ -123,8 +126,8 @@ fun ItemsScreen(
                             },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = NavyPrimary,
-                                selectedLabelColor = Color.White,
-                                containerColor = Color.White,
+                                selectedLabelColor = MaterialTheme.colorScheme.surface,
+                                containerColor = MaterialTheme.colorScheme.surface,
                                 labelColor = TextSecondary
                             ),
                             shape = RoundedCornerShape(20.dp)
@@ -158,7 +161,7 @@ fun ItemsScreen(
         FloatingActionButton(
             onClick = onNavigateToAddItem,
             containerColor = NavyPrimary,
-            contentColor = Color.White,
+            contentColor = MaterialTheme.colorScheme.surface,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -193,7 +196,7 @@ private fun InventoryItemCard(
     onDelete: (String) -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier
@@ -208,7 +211,7 @@ private fun InventoryItemCard(
                 modifier = Modifier
                     .size(44.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(BgLight),
+                    .background(MaterialTheme.colorScheme.background),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -226,14 +229,14 @@ private fun InventoryItemCard(
                     text = item.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextPrimary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "Qty: ${item.quantity} ${item.unit}",
                         fontSize = 12.sp,
-                        color = TextSecondary
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
                     if (item.badge != null) {
@@ -259,7 +262,7 @@ private fun InventoryItemCard(
                 text = "₹ ${item.sellingPrice.toInt()}",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextPrimary
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.width(4.dp))

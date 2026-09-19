@@ -70,7 +70,7 @@ fun ReportsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "Reports",
@@ -100,8 +100,8 @@ fun ReportsScreen(
                         },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = NavyPrimary,
-                            selectedLabelColor = Color.White,
-                            containerColor = Color.White,
+                            selectedLabelColor = MaterialTheme.colorScheme.surface,
+                            containerColor = MaterialTheme.colorScheme.surface,
                             labelColor = TextSecondary
                         ),
                         shape = RoundedCornerShape(16.dp)
@@ -166,7 +166,7 @@ fun ReportsScreen(
 
             // Sales Trend Chart Card
             Card(
-                colors = CardDefaults.cardColors(containerColor = Color.White),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -181,7 +181,7 @@ fun ReportsScreen(
                             text = "Sales Trend",
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                            color = TextPrimary
+                            color = MaterialTheme.colorScheme.onBackground
                         )
 
                         Surface(
@@ -257,7 +257,7 @@ fun ReportsScreen(
                             Text(
                                 text = date,
                                 fontSize = 10.sp,
-                                color = TextSecondary
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
@@ -268,7 +268,7 @@ fun ReportsScreen(
 
             // Category Wise Sales Card
             Card(
-                colors = CardDefaults.cardColors(containerColor = Color.White),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -278,7 +278,7 @@ fun ReportsScreen(
                         text = "Category Wise Sales",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = TextPrimary
+                        color = MaterialTheme.colorScheme.onBackground
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -310,8 +310,8 @@ private fun CategoryProgressRow(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = category, fontSize = 12.sp, fontWeight = FontWeight.Medium, color = TextPrimary)
-            Text(text = percentage, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = TextSecondary)
+            Text(text = category, fontSize = 12.sp, fontWeight = FontWeight.Medium, color = MaterialTheme.colorScheme.onBackground)
+            Text(text = percentage, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
 
         Spacer(modifier = Modifier.height(6.dp))
@@ -322,7 +322,7 @@ private fun CategoryProgressRow(
                 .fillMaxWidth()
                 .height(8.dp),
             color = PrimaryBlue,
-            trackColor = BgLight,
+            trackColor = MaterialTheme.colorScheme.background,
             drawStopIndicator = {}
         )
     }

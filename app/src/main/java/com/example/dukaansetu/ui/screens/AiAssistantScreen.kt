@@ -70,7 +70,7 @@ fun AiAssistantScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "Ask My Shop AI",
@@ -99,7 +99,7 @@ fun AiAssistantScreen(
                     text = "Poochiye jo bhi, main hoon\naapka vyapar saathi!",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextPrimary,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
 
@@ -157,7 +157,7 @@ fun AiAssistantScreen(
                     text = "Tap to speak",
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = TextSecondary
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -184,7 +184,7 @@ fun AiAssistantScreen(
                             text = "Hindi (India) ∨",
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium,
-                            color = TextPrimary
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 }
@@ -223,7 +223,7 @@ fun AiAssistantScreen(
                     } else {
                         // AI Response Card
                         Card(
-                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                             shape = RoundedCornerShape(16.dp),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                             modifier = Modifier.fillMaxWidth()
@@ -232,7 +232,7 @@ fun AiAssistantScreen(
                                 Text(
                                     text = msg.text,
                                     fontSize = 14.sp,
-                                    color = TextPrimary,
+                                    color = MaterialTheme.colorScheme.onBackground,
                                     lineHeight = 20.sp
                                 )
 
@@ -258,7 +258,7 @@ fun AiAssistantScreen(
                                         text = "Top Items",
                                         fontSize = 13.sp,
                                         fontWeight = FontWeight.Bold,
-                                        color = TextPrimary
+                                        color = MaterialTheme.colorScheme.onBackground
                                     )
                                     Spacer(modifier = Modifier.height(8.dp))
                                     msg.topItems.forEach { (name, qty) ->
@@ -291,7 +291,10 @@ fun AiAssistantScreen(
                         shape = RoundedCornerShape(24.dp),
                         modifier = Modifier.weight(1f),
                         colors = OutlinedTextFieldDefaults.colors(
-                            unfocusedBorderColor = Color(0xFFCBD5E1)
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
+                            unfocusedBorderColor = Color(0xFFCBD5E1),
                         )
                     )
 
@@ -338,7 +341,7 @@ private fun SuggestionCard(text: String, onClick: () -> Unit) {
             text = text,
             fontSize = 13.sp,
             fontWeight = FontWeight.Medium,
-            color = TextPrimary,
+            color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
         )
     }
@@ -381,7 +384,7 @@ private fun SalesBarChart() {
                 Text(
                     text = day,
                     fontSize = 10.sp,
-                    color = TextSecondary,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -403,14 +406,14 @@ private fun TopSellingItemRow(num: String, name: String, qty: String) {
                 text = num,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextSecondary,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.width(20.dp)
             )
             Text(
                 text = name,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Medium,
-                color = TextPrimary
+                color = MaterialTheme.colorScheme.onBackground
             )
         }
         Text(

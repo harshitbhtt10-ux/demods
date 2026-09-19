@@ -40,7 +40,7 @@ fun PartiesScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -111,15 +111,18 @@ fun PartiesScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
-                        focusedContainerColor = Color.White,
-                        unfocusedContainerColor = Color.White,
-                        unfocusedBorderColor = Color(0xFFE2E8F0)
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedBorderColor = Color(0xFFE2E8F0),
                     )
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text("Customer Pending Udhaar", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+                Text("Customer Pending Udhaar", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
 
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -148,7 +151,7 @@ fun PartiesScreen(
         FloatingActionButton(
             onClick = onNavigateToAddParty,
             containerColor = PrimaryBlue,
-            contentColor = Color.White,
+            contentColor = MaterialTheme.colorScheme.surface,
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -182,7 +185,7 @@ private fun PartyCustomerCard(
     onSendReminder: () -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier.fillMaxWidth()
@@ -213,13 +216,13 @@ private fun PartyCustomerCard(
                     text = customer.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextPrimary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "Pending: ${customer.daysPending} days",
                     fontSize = 11.sp,
-                    color = TextSecondary
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 

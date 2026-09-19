@@ -23,7 +23,7 @@ fun AboutAppScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "About DukkanSetu",
@@ -58,7 +58,7 @@ fun AboutAppScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Card(
-                colors = CardDefaults.cardColors(containerColor = Color.White),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -67,7 +67,7 @@ fun AboutAppScreen(
                     Text(
                         text = "DukaanSetu is an all-in-one smart business assistant for small retailers, shopkeepers, and local businesses in India. Manage inventory, voice sales counting, AI business assistant, billing, and Udhaar Khata seamlessly.",
                         fontSize = 13.sp,
-                        color = TextSecondary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         lineHeight = 20.sp,
                         textAlign = TextAlign.Center
                     )
@@ -80,7 +80,7 @@ fun AboutAppScreen(
                 text = "Made in India 🇮🇳",
                 fontSize = 13.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = TextSecondary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Spacer(modifier = Modifier.height(20.dp))

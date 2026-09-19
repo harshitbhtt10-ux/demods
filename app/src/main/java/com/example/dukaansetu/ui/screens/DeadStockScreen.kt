@@ -45,7 +45,7 @@ fun DeadStockScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "Dead / Slow Moving Stock",
@@ -55,7 +55,7 @@ fun DeadStockScreen(
         // Segmented Tab Row
         TabRow(
             selectedTabIndex = selectedTab,
-            containerColor = Color.White,
+            containerColor = MaterialTheme.colorScheme.surface,
             contentColor = NavyPrimary
         ) {
             Tab(
@@ -95,13 +95,13 @@ fun DeadStockScreen(
                             text = "3 items identified",
                             fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
-                            color = TextPrimary
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = "These products are not selling. Consider discount, combo offers or avoid re-purchasing.",
                             fontSize = 12.sp,
-                            color = TextSecondary,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             lineHeight = 16.sp
                         )
                     }
@@ -162,7 +162,7 @@ fun DeadStockScreen(
 @Composable
 private fun DeadStockCard(stockItem: DeadStockItem) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier.fillMaxWidth()
@@ -175,7 +175,7 @@ private fun DeadStockCard(stockItem: DeadStockItem) {
                 modifier = Modifier
                     .size(44.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(BgLight),
+                    .background(MaterialTheme.colorScheme.background),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -193,13 +193,13 @@ private fun DeadStockCard(stockItem: DeadStockItem) {
                     text = stockItem.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextPrimary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "Stock: ${stockItem.stock} pcs",
                     fontSize = 12.sp,
-                    color = TextSecondary
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
                     text = "Sold: ${stockItem.sold} pcs (30 days)",

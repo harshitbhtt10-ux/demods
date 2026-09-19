@@ -43,7 +43,7 @@ fun RegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding()
             .navigationBarsPadding()
             .padding(24.dp)
@@ -62,7 +62,7 @@ fun RegisterScreen(
                 text = "Create Account",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextPrimary
+                color = MaterialTheme.colorScheme.onBackground
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -70,7 +70,7 @@ fun RegisterScreen(
             Text(
                 text = "Apni dukaan ko DukaanSetu se jodiye",
                 fontSize = 14.sp,
-                color = TextSecondary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -88,8 +88,11 @@ fun RegisterScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
-                unfocusedBorderColor = Color(0xFFE2E8F0)
+                unfocusedBorderColor = Color(0xFFE2E8F0),
             )
         )
 
@@ -107,8 +110,11 @@ fun RegisterScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
-                unfocusedBorderColor = Color(0xFFE2E8F0)
+                unfocusedBorderColor = Color(0xFFE2E8F0),
             )
         )
 
@@ -126,8 +132,11 @@ fun RegisterScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
-                unfocusedBorderColor = Color(0xFFE2E8F0)
+                unfocusedBorderColor = Color(0xFFE2E8F0),
             )
         )
 
@@ -155,8 +164,11 @@ fun RegisterScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
-                unfocusedBorderColor = Color(0xFFE2E8F0)
+                unfocusedBorderColor = Color(0xFFE2E8F0),
             )
         )
 
@@ -175,8 +187,11 @@ fun RegisterScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
-                unfocusedBorderColor = Color(0xFFE2E8F0)
+                unfocusedBorderColor = Color(0xFFE2E8F0),
             )
         )
 
@@ -195,7 +210,7 @@ fun RegisterScreen(
             Text(
                 text = "I agree to the Terms of Service & Privacy Policy",
                 fontSize = 12.sp,
-                color = TextSecondary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -240,7 +255,7 @@ fun RegisterScreen(
             Text(
                 text = "Already have an account? ",
                 fontSize = 14.sp,
-                color = TextSecondary
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Text(
                 text = "Sign In",

@@ -44,7 +44,7 @@ fun HelpSupportScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BgLight)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         DukaanSetuTopBar(
             title = "Help & Support",
@@ -95,7 +95,7 @@ fun HelpSupportScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text("Frequently Asked Questions (FAQ)", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+            Text("Frequently Asked Questions (FAQ)", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -115,7 +115,7 @@ private fun FaqCardItem(faq: FaqItem) {
     var expanded by remember { mutableStateOf(false) }
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier
@@ -132,7 +132,7 @@ private fun FaqCardItem(faq: FaqItem) {
                     text = faq.question,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextPrimary,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.weight(1f)
                 )
 
@@ -150,7 +150,7 @@ private fun FaqCardItem(faq: FaqItem) {
                 Text(
                     text = faq.answer,
                     fontSize = 12.sp,
-                    color = TextSecondary,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     lineHeight = 18.sp
                 )
             }
