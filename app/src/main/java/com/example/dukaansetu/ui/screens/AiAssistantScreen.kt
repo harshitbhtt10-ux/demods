@@ -1,5 +1,10 @@
 package com.example.dukaansetu.ui.screens
 
+import android.app.Activity
+import android.content.Intent
+import android.speech.RecognizerIntent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -25,6 +30,7 @@ import com.example.dukaansetu.ui.components.DukaanSetuLogo
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
+import java.util.Locale
 
 @Composable
 fun AiAssistantScreen(
@@ -35,6 +41,31 @@ fun AiAssistantScreen(
     var inputText by remember { mutableStateOf("") }
     
     val chatMessages by viewModel.chatMessages.collectAsState()
+
+    val speechRecognizerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val spokenText = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)?.firstOrNull()
+            if (!spokenText.isNullOrEmpty()) {
+                viewModel.sendAiQuery(spokenText)
+                isChatActive = true
+            }
+        }
+    }
+
+    val startVoiceRecognition = {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to DukaanSetu AI...")
+        }
+        try {
+            speechRecognizerLauncher.launch(intent)
+        } catch (e: Exception) {
+            // Speech recognition not supported on device
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -109,7 +140,7 @@ fun AiAssistantScreen(
                         .size(80.dp)
                         .clip(CircleShape)
                         .background(PrimaryBlue)
-                        .clickable { isChatActive = true },
+                        .clickable { startVoiceRecognition() },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -272,6 +303,8 @@ fun AiAssistantScreen(
                                 viewModel.sendAiQuery(inputText)
                                 inputText = ""
                                 isChatActive = true
+                            } else {
+                                startVoiceRecognition()
                             }
                         },
                         modifier = Modifier

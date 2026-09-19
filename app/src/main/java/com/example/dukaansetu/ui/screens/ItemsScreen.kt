@@ -262,13 +262,31 @@ private fun InventoryItemCard(
 
             Spacer(modifier = Modifier.width(4.dp))
 
-            IconButton(onClick = { }, modifier = Modifier.size(24.dp)) {
-                Icon(
-                    imageVector = Icons.Default.MoreVert,
-                    contentDescription = "Options",
-                    tint = TextSecondary,
-                    modifier = Modifier.size(18.dp)
-                )
+            Box {
+                var expanded by remember { mutableStateOf(false) }
+
+                IconButton(onClick = { expanded = true }, modifier = Modifier.size(24.dp)) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Options",
+                        tint = TextSecondary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Edit Item") },
+                        onClick = { expanded = false }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("Delete") },
+                        onClick = { expanded = false }
+                    )
+                }
             }
         }
     }
