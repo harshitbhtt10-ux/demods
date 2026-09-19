@@ -17,7 +17,10 @@ sealed class Screen(val route: String) {
     object AboutApp : Screen("about_app")
     object UserProfile : Screen("user_profile")
     object AddParty : Screen("add_party")
+<<<<<<< HEAD
     object Register : Screen("register")
+=======
+>>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 }
 
 enum class BottomTab(val title: String, val route: String) {

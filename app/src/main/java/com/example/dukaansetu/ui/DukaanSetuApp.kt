@@ -55,9 +55,12 @@ fun DukaanSetuApp() {
                             onLoginSuccess = {
                                 currentScreen = Screen.Main
                                 currentBottomTab = BottomTab.HOME
+<<<<<<< HEAD
                             },
                             onNavigateToRegister = {
                                 currentScreen = Screen.Register
+=======
+>>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
                             }
                         )
                     }
@@ -174,6 +177,7 @@ fun DukaanSetuApp() {
                         )
                     }
 
+<<<<<<< HEAD
                     Screen.Register -> {
                         RegisterScreen(
                             onRegisterSuccess = {
@@ -189,6 +193,8 @@ fun DukaanSetuApp() {
                         )
                     }
 
+=======
+>>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
                     Screen.DeadStock -> {
                         DeadStockScreen(
                             onBackClick = { currentScreen = Screen.Main }
