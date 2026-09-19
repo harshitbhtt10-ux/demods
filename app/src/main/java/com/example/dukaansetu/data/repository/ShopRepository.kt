@@ -67,6 +67,14 @@ class ShopRepository {
         _inventory.value = _inventory.value.filter { it.id != id }
     }
 
+    fun deleteParty(id: String) {
+        _parties.value = _parties.value.filter { it.id != id }
+    }
+
+    fun deleteBill(id: String) {
+        _bills.value = _bills.value.filter { it.id != id }
+    }
+
     fun addChatMessage(message: ChatMessage) {
         _chatMessages.value = _chatMessages.value + message
     }

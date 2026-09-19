@@ -125,7 +125,10 @@ fun BillsScreen(
                     contentPadding = PaddingValues(bottom = 80.dp)
                 ) {
                     items(billRecords) { bill ->
-                        BillRecordCard(bill = bill)
+                        BillRecordCard(
+                            bill = bill,
+                            onDelete = { viewModel.deleteBill(bill.id) }
+                        )
                     }
                 }
             }
@@ -164,7 +167,10 @@ fun BillsScreen(
 }
 
 @Composable
-private fun BillRecordCard(bill: BillRecord) {
+private fun BillRecordCard(
+    bill: BillRecord,
+    onDelete: (String) -> Unit
+) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
@@ -225,6 +231,34 @@ private fun BillRecordCard(bill: BillRecord) {
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.width(4.dp))
+
+            Box {
+                var expanded by remember { mutableStateOf(false) }
+
+                IconButton(onClick = { expanded = true }, modifier = Modifier.size(24.dp)) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Options",
+                        tint = TextSecondary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Delete Bill", color = RedDanger) },
+                        onClick = {
+                            expanded = false
+                            onDelete(bill.id)
+                        }
                     )
                 }
             }

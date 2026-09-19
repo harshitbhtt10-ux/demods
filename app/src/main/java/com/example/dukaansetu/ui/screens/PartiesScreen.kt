@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Send
@@ -134,13 +135,14 @@ fun PartiesScreen(
                         PartyCustomerCard(
                             customer = customer,
                             onSendReminder = {
-                                val message = "Namaste ${customer.name} ji, DukaanSetu se aapka ₹${customer.pendingAmount} ka udhaar pending hai. Kripya payment karein. Dhanyawad!"
+                                val message = "Namaste ${customer.name} ji, DukaanSetu se aapka ₹${customer.pendingAmount.toInt()} ka udhaar pending hai. Kripya payment karein. Dhanyawad!"
                                 val intent = Intent(Intent.ACTION_SEND).apply {
                                     type = "text/plain"
                                     putExtra(Intent.EXTRA_TEXT, message)
                                 }
                                 context.startActivity(Intent.createChooser(intent, "Send Payment Reminder via"))
-                            }
+                            },
+                            onDelete = { viewModel.deleteParty(customer.id) }
                         )
                     }
                 }
@@ -182,7 +184,8 @@ fun PartiesScreen(
 @Composable
 private fun PartyCustomerCard(
     customer: PartyCustomer,
-    onSendReminder: () -> Unit
+    onSendReminder: () -> Unit,
+    onDelete: (String) -> Unit
 ) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -257,6 +260,34 @@ private fun PartyCustomerCard(
                             fontWeight = FontWeight.Bold
                         )
                     }
+                }
+            }
+
+            Spacer(modifier = Modifier.width(4.dp))
+
+            Box {
+                var expanded by remember { mutableStateOf(false) }
+
+                IconButton(onClick = { expanded = true }, modifier = Modifier.size(24.dp)) {
+                    Icon(
+                        imageVector = Icons.Default.MoreVert,
+                        contentDescription = "Options",
+                        tint = TextSecondary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Delete Party", color = RedDanger) },
+                        onClick = {
+                            expanded = false
+                            onDelete(customer.id)
+                        }
+                    )
                 }
             }
         }

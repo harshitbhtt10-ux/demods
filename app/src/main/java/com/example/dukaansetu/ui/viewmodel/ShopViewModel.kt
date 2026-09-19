@@ -58,6 +58,14 @@ class ShopViewModel : ViewModel() {
         repository.deleteItem(id)
     }
 
+    fun deleteParty(id: String) {
+        repository.deleteParty(id)
+    }
+
+    fun deleteBill(id: String) {
+        repository.deleteBill(id)
+    }
+
     fun sendAiQuery(query: String) {
         if (query.isNotBlank()) {
             repository.processAiQuery(query)
