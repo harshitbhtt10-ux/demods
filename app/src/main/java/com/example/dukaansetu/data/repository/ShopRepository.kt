@@ -63,6 +63,10 @@ class ShopRepository {
         _bills.value = listOf(bill) + _bills.value
     }
 
+    fun deleteItem(id: String) {
+        _inventory.value = _inventory.value.filter { it.id != id }
+    }
+
     fun addChatMessage(message: ChatMessage) {
         _chatMessages.value = _chatMessages.value + message
     }

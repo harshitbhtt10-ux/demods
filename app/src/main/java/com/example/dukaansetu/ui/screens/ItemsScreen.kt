@@ -146,7 +146,8 @@ fun ItemsScreen(
                                 if (item.badge == "Dead Stock") {
                                     onNavigateToDeadStock()
                                 }
-                            }
+                            },
+                            onDelete = { viewModel.deleteItem(item.id) }
                         )
                     }
                 }
@@ -188,7 +189,8 @@ fun ItemsScreen(
 @Composable
 private fun InventoryItemCard(
     item: InventoryItem,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onDelete: (String) -> Unit
 ) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -283,8 +285,11 @@ private fun InventoryItemCard(
                         onClick = { expanded = false }
                     )
                     DropdownMenuItem(
-                        text = { Text("Delete") },
-                        onClick = { expanded = false }
+                        text = { Text("Delete", color = RedDanger) },
+                        onClick = { 
+                            expanded = false 
+                            onDelete(item.id)
+                        }
                     )
                 }
             }
