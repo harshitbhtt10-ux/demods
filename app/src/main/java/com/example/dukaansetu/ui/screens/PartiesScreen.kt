@@ -40,7 +40,7 @@ fun PartiesScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -111,8 +111,8 @@ fun PartiesScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -122,7 +122,7 @@ fun PartiesScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text("Customer Pending Udhaar", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
+                Text("Customer Pending Udhaar", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
 
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -185,7 +185,7 @@ private fun PartyCustomerCard(
     onSendReminder: () -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier.fillMaxWidth()
@@ -216,13 +216,13 @@ private fun PartyCustomerCard(
                     text = customer.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "Pending: ${customer.daysPending} days",
                     fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
             }
 

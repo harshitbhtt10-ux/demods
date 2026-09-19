@@ -36,7 +36,7 @@ fun BillsScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -75,8 +75,8 @@ fun BillsScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -116,7 +116,7 @@ fun BillsScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text("Recent Invoices", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onBackground)
+                Text("Recent Invoices", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
 
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -166,7 +166,7 @@ fun BillsScreen(
 @Composable
 private fun BillRecordCard(bill: BillRecord) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier.fillMaxWidth()
@@ -179,7 +179,7 @@ private fun BillRecordCard(bill: BillRecord) {
                 modifier = Modifier
                     .size(44.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.background),
+                    .background(BgLight),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -197,13 +197,13 @@ private fun BillRecordCard(bill: BillRecord) {
                     text = bill.customerName,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "${bill.billNo} • ${bill.date}",
                     fontSize = 11.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
             }
 
@@ -212,7 +212,7 @@ private fun BillRecordCard(bill: BillRecord) {
                     text = "₹ ${bill.amount.toInt()}",
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Surface(

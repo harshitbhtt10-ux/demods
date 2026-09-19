@@ -51,7 +51,7 @@ fun ItemsScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -97,8 +97,8 @@ fun ItemsScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -127,7 +127,7 @@ fun ItemsScreen(
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = NavyPrimary,
                                 selectedLabelColor = MaterialTheme.colorScheme.surface,
-                                containerColor = MaterialTheme.colorScheme.surface,
+                                containerColor = Color.White,
                                 labelColor = TextSecondary
                             ),
                             shape = RoundedCornerShape(20.dp)
@@ -196,7 +196,7 @@ private fun InventoryItemCard(
     onDelete: (String) -> Unit
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier
@@ -211,7 +211,7 @@ private fun InventoryItemCard(
                 modifier = Modifier
                     .size(44.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.background),
+                    .background(BgLight),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -229,14 +229,14 @@ private fun InventoryItemCard(
                     text = item.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "Qty: ${item.quantity} ${item.unit}",
                         fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = TextSecondary
                     )
 
                     if (item.badge != null) {
@@ -262,7 +262,7 @@ private fun InventoryItemCard(
                 text = "₹ ${item.sellingPrice.toInt()}",
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
+                color = TextPrimary
             )
 
             Spacer(modifier = Modifier.width(4.dp))

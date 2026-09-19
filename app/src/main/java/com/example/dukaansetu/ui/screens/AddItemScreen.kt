@@ -43,7 +43,7 @@ fun AddItemScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         DukaanSetuTopBar(
             title = "Add Item",
@@ -59,7 +59,7 @@ fun AddItemScreen(
             // Product / Service Segmented Toggle
             TabRow(
                 selectedTabIndex = if (isProductTab) 0 else 1,
-                containerColor = MaterialTheme.colorScheme.surface,
+                containerColor = Color.White,
                 contentColor = NavyPrimary,
                 modifier = Modifier.clip(RoundedCornerShape(12.dp))
             ) {
@@ -83,7 +83,7 @@ fun AddItemScreen(
                     .fillMaxWidth()
                     .height(100.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.background)
+                    .background(BgLight)
                     .clickable { },
                 contentAlignment = Alignment.Center
             ) {
@@ -106,7 +106,7 @@ fun AddItemScreen(
                     Text(
                         text = "Add Photo",
                         fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = TextSecondary,
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -123,8 +123,8 @@ fun AddItemScreen(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -144,8 +144,8 @@ fun AddItemScreen(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -164,8 +164,8 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -182,8 +182,8 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -203,8 +203,8 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -221,8 +221,8 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -244,8 +244,8 @@ fun AddItemScreen(
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                     focusedContainerColor = MaterialTheme.colorScheme.surface,
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface,
@@ -256,7 +256,7 @@ fun AddItemScreen(
 
             // Track Expiry Switch
             Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 shape = RoundedCornerShape(12.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -271,7 +271,7 @@ fun AddItemScreen(
                         text = "Track Expiry Date",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = TextPrimary
                     )
 
                     Switch(

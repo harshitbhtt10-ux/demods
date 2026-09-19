@@ -50,7 +50,7 @@ fun HomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
             .verticalScroll(rememberScrollState())
     ) {
         // Top Bar
@@ -139,7 +139,7 @@ fun HomeScreen(
                         text = "Fri, 12 Sep 2025",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = TextSecondary,
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
@@ -263,7 +263,7 @@ fun HomeScreen(
 
             // Quick Actions Grid
             Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -273,7 +273,7 @@ fun HomeScreen(
                         text = "Quick Actions",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = TextPrimary
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -392,7 +392,7 @@ private fun QuickActionButton(
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(MaterialTheme.colorScheme.background),
+                .background(BgLight),
             contentAlignment = Alignment.Center
         ) {
             Icon(
@@ -407,7 +407,7 @@ private fun QuickActionButton(
             text = title,
             fontSize = 11.sp,
             fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onBackground,
+            color = TextPrimary,
             modifier = Modifier.wrapContentWidth()
         )
     }

@@ -49,7 +49,7 @@ fun MoreScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         // Header
         Box(
@@ -75,7 +75,7 @@ fun MoreScreen(
         ) {
             // Profile Card
             Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier
@@ -108,12 +108,12 @@ fun MoreScreen(
                             text = "Harshit Bhatt",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
+                            color = TextPrimary
                         )
                         Text(
                             text = "harshit@example.com",
                             fontSize = 13.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = TextSecondary
                         )
                     }
 
@@ -129,7 +129,7 @@ fun MoreScreen(
 
             // Settings List
             Card(
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -197,7 +197,7 @@ fun MoreScreen(
                                 modifier = Modifier
                                     .size(36.dp)
                                     .clip(CircleShape)
-                                    .background(MaterialTheme.colorScheme.background),
+                                    .background(BgLight),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
@@ -212,7 +212,7 @@ fun MoreScreen(
                                 text = "Dark Mode",
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onBackground
+                                color = TextPrimary
                             )
                         }
 
@@ -283,7 +283,7 @@ private fun SettingsRowItem(
             modifier = Modifier
                 .size(36.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.background),
+                .background(BgLight),
             contentAlignment = Alignment.Center
         ) {
             Icon(
@@ -301,12 +301,12 @@ private fun SettingsRowItem(
                 text = title,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onBackground
+                color = TextPrimary
             )
             Text(
                 text = subtitle,
                 fontSize = 11.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         }
 

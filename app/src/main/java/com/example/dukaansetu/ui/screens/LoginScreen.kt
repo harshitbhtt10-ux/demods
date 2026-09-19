@@ -46,7 +46,7 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
             .statusBarsPadding()
             .navigationBarsPadding()
             .padding(24.dp)
@@ -65,7 +65,7 @@ fun LoginScreen(
                 text = "Welcome Back",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
+                color = TextPrimary
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -73,7 +73,7 @@ fun LoginScreen(
             Text(
                 text = "Apni dukaan ko aur smart banayein",
                 fontSize = 14.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         }
 
@@ -94,8 +94,8 @@ fun LoginScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
                 unfocusedBorderColor = Color(0xFFE2E8F0),
@@ -129,8 +129,8 @@ fun LoginScreen(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.fillMaxWidth(),
             colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+                    focusedTextColor = TextPrimary,
+                    unfocusedTextColor = TextPrimary,
                     cursorColor = PrimaryBlue,
                 focusedBorderColor = NavyPrimary,
                 unfocusedBorderColor = Color(0xFFE2E8F0),
@@ -154,7 +154,7 @@ fun LoginScreen(
                 Text(
                     text = "Remember me",
                     fontSize = 13.sp,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
             }
 
@@ -210,7 +210,7 @@ fun LoginScreen(
                 text = "OR",
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = TextSecondary,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
             HorizontalDivider(
@@ -256,7 +256,7 @@ fun LoginScreen(
             Text(
                 text = "New to DukkanSetu? ",
                 fontSize = 14.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
             Text(
                 text = "Create Account",
@@ -273,7 +273,7 @@ fun LoginScreen(
     if (showGoogleAccountPicker) {
         ModalBottomSheet(
             onDismissRequest = { showGoogleAccountPicker = false },
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = Color.White,
             shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
         ) {
             Column(
@@ -296,12 +296,12 @@ fun LoginScreen(
                             text = "Choose an account",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
+                            color = TextPrimary
                         )
                         Text(
                             text = "to continue to DukaanSetu",
                             fontSize = 12.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = TextSecondary
                         )
                     }
                 }
@@ -370,7 +370,7 @@ fun LoginScreen(
                         text = "Add another account",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = TextPrimary
                     )
                 }
 
@@ -417,12 +417,12 @@ private fun GoogleAccountItem(
                 text = name,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
+                color = TextPrimary
             )
             Text(
                 text = email,
                 fontSize = 12.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = TextSecondary
             )
         }
     }

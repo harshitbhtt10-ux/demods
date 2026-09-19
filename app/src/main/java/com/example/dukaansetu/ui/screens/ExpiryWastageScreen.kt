@@ -44,7 +44,7 @@ fun ExpiryWastageScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(BgLight)
     ) {
         DukaanSetuTopBar(
             title = "Expiry / Wastage",
@@ -54,7 +54,7 @@ fun ExpiryWastageScreen(
         // Segmented Tabs
         SecondaryTabRow(
             selectedTabIndex = selectedTab,
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = Color.White,
             contentColor = NavyPrimary
         ) {
             Tab(
@@ -105,7 +105,7 @@ fun ExpiryWastageScreen(
                         Text(
                             text = "Please prioritise these for sale to avoid wastage.",
                             fontSize = 12.sp,
-                            color = MaterialTheme.colorScheme.onBackground
+                            color = TextPrimary
                         )
                     }
                 }
@@ -128,7 +128,7 @@ fun ExpiryWastageScreen(
 @Composable
 private fun ExpiryCard(item: ExpiryItem) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = Modifier.fillMaxWidth()
@@ -141,7 +141,7 @@ private fun ExpiryCard(item: ExpiryItem) {
                 modifier = Modifier
                     .size(44.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.background),
+                    .background(BgLight),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -159,13 +159,13 @@ private fun ExpiryCard(item: ExpiryItem) {
                     text = item.name,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = TextPrimary
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = "${item.qty} pcs",
                     fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TextSecondary
                 )
             }
 

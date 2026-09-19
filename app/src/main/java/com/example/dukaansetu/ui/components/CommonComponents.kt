@@ -225,7 +225,7 @@ fun StatCard(
     onClick: () -> Unit = {}
 ) {
     Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
         modifier = modifier.clickable { onClick() }
@@ -257,7 +257,7 @@ fun StatCard(
                     Text(
                         text = title,
                         fontSize = 11.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        color = TextSecondary,
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -269,7 +269,7 @@ fun StatCard(
                 text = value,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
+                color = TextPrimary
             )
 
             Spacer(modifier = Modifier.height(2.dp))
