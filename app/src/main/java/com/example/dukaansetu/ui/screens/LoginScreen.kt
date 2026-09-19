@@ -4,34 +4,30 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuOfficialLogoHeader
 import com.example.dukaansetu.ui.theme.NavyPrimary
 import com.example.dukaansetu.ui.theme.PrimaryBlue
-<<<<<<< HEAD
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.draw.clip
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Person
 import com.example.dukaansetu.ui.theme.TextPrimary
 import com.example.dukaansetu.ui.theme.TextSecondary
 
@@ -40,23 +36,12 @@ import com.example.dukaansetu.ui.theme.TextSecondary
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
     onNavigateToRegister: () -> Unit = {}
-=======
-import com.example.dukaansetu.ui.theme.TextPrimary
-import com.example.dukaansetu.ui.theme.TextSecondary
-
-@Composable
-fun LoginScreen(
-    onLoginSuccess: () -> Unit
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 ) {
     var mobileNumber by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var rememberMe by remember { mutableStateOf(true) }
-<<<<<<< HEAD
     var showGoogleAccountPicker by remember { mutableStateOf(false) }
-=======
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 
     Column(
         modifier = Modifier
@@ -232,11 +217,7 @@ fun LoginScreen(
 
         // Google Sign In
         OutlinedButton(
-<<<<<<< HEAD
             onClick = { showGoogleAccountPicker = true },
-=======
-            onClick = onLoginSuccess,
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
             shape = RoundedCornerShape(12.dp),
             colors = ButtonDefaults.outlinedButtonColors(contentColor = TextPrimary),
             modifier = Modifier
@@ -263,11 +244,7 @@ fun LoginScreen(
 
         // Footer Link
         Row(
-<<<<<<< HEAD
             modifier = Modifier.clickable { onNavigateToRegister() },
-=======
-            modifier = Modifier.clickable { onLoginSuccess() },
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
@@ -285,7 +262,6 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
     }
-<<<<<<< HEAD
 
     // Google Account Picker Bottom Sheet
     if (showGoogleAccountPicker) {
@@ -444,8 +420,6 @@ private fun GoogleAccountItem(
             )
         }
     }
-=======
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 }
 
 @Composable

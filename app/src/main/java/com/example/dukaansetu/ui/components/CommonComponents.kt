@@ -17,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.R
@@ -35,11 +35,7 @@ fun DukaanSetuLogo(
         contentDescription = "DukaanSetu Logo",
         modifier = modifier
             .size(size.dp)
-<<<<<<< HEAD
             .clip(CircleShape)
-=======
-            .clip(RoundedCornerShape((size * 0.22).dp))
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
     )
 }
 
@@ -53,21 +49,13 @@ fun DukaanSetuOfficialLogoHeader(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-<<<<<<< HEAD
         // Official Circular Logo Graphic Badge
-=======
-        // Official Logo Graphic Badge
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
         Image(
             painter = painterResource(id = R.drawable.ic_dukaansetu_logo),
             contentDescription = "DukaanSetu Official Logo",
             modifier = Modifier
                 .size(logoSize.dp)
-<<<<<<< HEAD
                 .clip(CircleShape)
-=======
-                .clip(RoundedCornerShape((logoSize * 0.22).dp))
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
         )
 
         Spacer(modifier = Modifier.height(12.dp))

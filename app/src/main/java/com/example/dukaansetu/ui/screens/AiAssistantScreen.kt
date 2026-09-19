@@ -1,7 +1,6 @@
 package com.example.dukaansetu.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -13,7 +12,6 @@ import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Send
-import androidx.compose.material.icons.filled.SmartToy
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,10 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-<<<<<<< HEAD
 import com.example.dukaansetu.ui.components.DukaanSetuLogo
-=======
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
 
@@ -60,26 +55,8 @@ fun AiAssistantScreen(
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
 
-<<<<<<< HEAD
                 // Official DukaanSetu AI Mascot Logo
                 DukaanSetuLogo(size = 90)
-=======
-                // Robot Mascot
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(PrimaryBlue.copy(alpha = 0.15f)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.SmartToy,
-                        contentDescription = "AI Robot",
-                        tint = PrimaryBlue,
-                        modifier = Modifier.size(60.dp)
-                    )
-                }
->>>>>>> 1e5bca1cbac9e47d53142d0830af6fb2af384e34
 
                 Spacer(modifier = Modifier.height(16.dp))
 
