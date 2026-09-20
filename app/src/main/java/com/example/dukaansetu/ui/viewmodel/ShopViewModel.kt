@@ -6,9 +6,6 @@ import com.example.dukaansetu.data.model.InventoryItem
 import com.example.dukaansetu.data.model.PartyCustomer
 import com.example.dukaansetu.data.repository.ShopRepository
 import kotlinx.coroutines.flow.StateFlow
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class ShopViewModel : ViewModel() {
     private val repository = ShopRepository()
@@ -28,11 +25,11 @@ class ShopViewModel : ViewModel() {
         expiryDate: String
     ) {
         val newItem = InventoryItem(
-            id = System.currentTimeMillis().toString(),
+            id = "",
             name = name,
             category = category,
-            purchasePrice = purchasePrice,
-            sellingPrice = sellingPrice,
+            purchasePriceMinor = (purchasePrice * 100).toInt(),
+            sellingPriceMinor = (sellingPrice * 100).toInt(),
             quantity = quantity,
             unit = unit,
             expiryDate = expiryDate,
@@ -43,10 +40,10 @@ class ShopViewModel : ViewModel() {
 
     fun addParty(name: String, phone: String, pendingAmount: Double, address: String, type: String) {
         val newParty = PartyCustomer(
-            id = System.currentTimeMillis().toString(),
+            id = "",
             name = name,
             phone = phone,
-            pendingAmount = pendingAmount,
+            pendingAmountMinor = (pendingAmount * 100).toInt(),
             daysPending = if (pendingAmount > 0) 1 else 0,
             address = address,
             type = type

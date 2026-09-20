@@ -13,3 +13,18 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Node & Backend
+node_modules/
+dist/
+backend/node_modules/
+backend/dist/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Android build outputs
+app/build/
+build/
