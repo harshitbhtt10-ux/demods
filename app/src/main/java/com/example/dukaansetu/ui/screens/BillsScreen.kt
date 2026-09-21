@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.data.model.BillRecord
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
@@ -32,6 +33,8 @@ fun BillsScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     val billRecords by viewModel.bills.collectAsState()
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
 
     Box(
         modifier = Modifier
@@ -50,7 +53,7 @@ fun BillsScreen(
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
                 Text(
-                    text = "Bills & Receipts",
+                    text = s.bills,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White

@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.data.model.PartyCustomer
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
@@ -37,6 +38,8 @@ fun PartiesScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     val customers by viewModel.parties.collectAsState()
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
 
     Box(
         modifier = Modifier
@@ -55,7 +58,7 @@ fun PartiesScreen(
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
                 Text(
-                    text = "Parties & Udhaar Khata",
+                    text = s.parties,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White

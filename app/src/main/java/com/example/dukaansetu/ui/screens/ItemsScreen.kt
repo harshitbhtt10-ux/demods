@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.data.model.InventoryItem
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
@@ -36,6 +37,8 @@ fun ItemsScreen(
     var selectedFilter by remember { mutableStateOf("All") }
 
     val inventory by viewModel.inventory.collectAsState()
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
 
     val filteredItems = inventory.filter { item ->
         val matchesSearch = item.name.contains(searchQuery, ignoreCase = true)
@@ -65,7 +68,7 @@ fun ItemsScreen(
                     .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
                 Text(
-                    text = "Items",
+                    text = s.items,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White

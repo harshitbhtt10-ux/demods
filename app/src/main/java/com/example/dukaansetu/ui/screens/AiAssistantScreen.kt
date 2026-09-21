@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuLogo
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 import java.util.Locale
@@ -41,6 +42,8 @@ fun AiAssistantScreen(
     var inputText by remember { mutableStateOf("") }
     
     val chatMessages by viewModel.chatMessages.collectAsState()
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
 
     val speechRecognizerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -73,7 +76,7 @@ fun AiAssistantScreen(
             .background(BgLight)
     ) {
         DukaanSetuTopBar(
-            title = "Ask My Shop AI",
+            title = s.askMyShopAi,
             onBackClick = onBackClick,
             trailingIcon = Icons.Default.History,
             onTrailingClick = { isChatActive = !isChatActive }
