@@ -64,6 +64,28 @@ class ShopViewModel : ViewModel() {
         repository.deleteItem(id)
     }
 
+    fun updateItem(
+        id: String,
+        name: String,
+        category: String,
+        purchasePrice: Double,
+        sellingPrice: Double,
+        quantity: Int,
+        unit: String
+    ) {
+        val updatedItem = InventoryItem(
+            id = id,
+            name = name,
+            category = category,
+            purchasePriceMinor = (purchasePrice * 100).toInt(),
+            sellingPriceMinor = (sellingPrice * 100).toInt(),
+            quantity = quantity,
+            unit = unit,
+            badge = if (quantity <= 5) "Low Stock" else null
+        )
+        repository.updateItem(updatedItem)
+    }
+
     fun deleteParty(id: String) {
         repository.deleteParty(id)
     }

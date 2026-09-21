@@ -35,6 +35,7 @@ fun ItemsScreen(
 ) {
     var searchQuery by remember { mutableStateOf("") }
     var selectedFilter by remember { mutableStateOf("All") }
+    var editingItem by remember { mutableStateOf<InventoryItem?>(null) }
 
     val inventory by viewModel.inventory.collectAsState()
     val currentLang by viewModel.currentLanguage.collectAsState()
@@ -153,11 +154,22 @@ fun ItemsScreen(
                                     onNavigateToDeadStock()
                                 }
                             },
+                            onEdit = { editingItem = item },
                             onDelete = { viewModel.deleteItem(item.id) }
                         )
                     }
                 }
             }
+        }
+
+        if (editingItem != null) {
+            EditItemDialog(
+                item = editingItem!!,
+                onDismiss = { editingItem = null },
+                onSave = { name, cat, costP, sellP, qty, u ->
+                    viewModel.updateItem(editingItem!!.id, name, cat, costP, sellP, qty, u)
+                }
+            )
         }
 
         // Floating Action Button
@@ -196,6 +208,7 @@ fun ItemsScreen(
 private fun InventoryItemCard(
     item: InventoryItem,
     onClick: () -> Unit,
+    onEdit: () -> Unit,
     onDelete: (String) -> Unit
 ) {
     Card(
@@ -288,7 +301,10 @@ private fun InventoryItemCard(
                 ) {
                     DropdownMenuItem(
                         text = { Text("Edit Item") },
-                        onClick = { expanded = false }
+                        onClick = { 
+                            expanded = false
+                            onEdit()
+                        }
                     )
                     DropdownMenuItem(
                         text = { Text("Delete", color = RedDanger) },
@@ -301,4 +317,97 @@ private fun InventoryItemCard(
             }
         }
     }
+}
+
+@Composable
+private fun EditItemDialog(
+    item: InventoryItem,
+    onDismiss: () -> Unit,
+    onSave: (name: String, category: String, purchasePrice: Double, sellingPrice: Double, qty: Int, unit: String) -> Unit
+) {
+    var name by remember { mutableStateOf(item.name) }
+    var category by remember { mutableStateOf(item.category) }
+    var purchasePrice by remember { mutableStateOf(item.purchasePrice.toInt().toString()) }
+    var sellingPrice by remember { mutableStateOf(item.sellingPrice.toInt().toString()) }
+    var quantity by remember { mutableStateOf(item.quantity.toString()) }
+    var unit by remember { mutableStateOf(item.unit) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Edit Item", fontWeight = FontWeight.Bold, fontSize = 18.sp) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Item Name") },
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier.fillMaxWidth()
+                )
+                OutlinedTextField(
+                    value = category,
+                    onValueChange = { category = it },
+                    label = { Text("Category") },
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedTextField(
+                        value = sellingPrice,
+                        onValueChange = { sellingPrice = it },
+                        label = { Text("Selling Price (₹)") },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.weight(1f)
+                    )
+                    OutlinedTextField(
+                        value = purchasePrice,
+                        onValueChange = { purchasePrice = it },
+                        label = { Text("Cost Price (₹)") },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedTextField(
+                        value = quantity,
+                        onValueChange = { quantity = it },
+                        label = { Text("Stock Qty") },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.weight(1f)
+                    )
+                    OutlinedTextField(
+                        value = unit,
+                        onValueChange = { unit = it },
+                        label = { Text("Unit") },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            Button(
+                onClick = {
+                    onSave(
+                        name,
+                        category,
+                        purchasePrice.toDoubleOrNull() ?: item.purchasePrice,
+                        sellingPrice.toDoubleOrNull() ?: item.sellingPrice,
+                        quantity.toIntOrNull() ?: item.quantity,
+                        unit
+                    )
+                    onDismiss()
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = NavyPrimary),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text("Save Changes", color = Color.White)
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel", color = TextSecondary)
+            }
+        }
+    )
 }

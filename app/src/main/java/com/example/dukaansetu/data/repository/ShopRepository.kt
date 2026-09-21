@@ -119,6 +119,10 @@ class ShopRepository {
         _inventory.value = _inventory.value.filter { it.id != id }
     }
 
+    fun updateItem(updatedItem: InventoryItem) {
+        _inventory.value = _inventory.value.map { if (it.id == updatedItem.id) updatedItem else it }
+    }
+
     fun deleteParty(id: String) {
         _parties.value = _parties.value.filter { it.id != id }
     }
