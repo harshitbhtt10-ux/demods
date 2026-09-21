@@ -24,6 +24,7 @@ import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddItemScreen(
     viewModel: ShopViewModel,
@@ -32,13 +33,24 @@ fun AddItemScreen(
 ) {
     var isProductTab by remember { mutableStateOf(true) }
     var itemName by remember { mutableStateOf("") }
-    var category by remember { mutableStateOf("") }
+    var category by remember { mutableStateOf("Grocery") }
     var purchasePrice by remember { mutableStateOf("") }
     var sellingPrice by remember { mutableStateOf("") }
     var quantity by remember { mutableStateOf("") }
     var unit by remember { mutableStateOf("pcs") }
     var expiryDate by remember { mutableStateOf("") }
     var trackExpiry by remember { mutableStateOf(true) }
+
+    var categoryExpanded by remember { mutableStateOf(false) }
+    var unitExpanded by remember { mutableStateOf(false) }
+
+    val categories = remember {
+        listOf("Grocery", "Snacks", "Beverages", "Personal Care", "Household", "Health", "Dairy & Bakery", "General")
+    }
+
+    val units = remember {
+        listOf("pcs", "kg", "gm", "ltr", "ml", "box", "pkt")
+    }
 
     Column(
         modifier = Modifier
@@ -133,24 +145,48 @@ fun AddItemScreen(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            OutlinedTextField(
-                value = category,
-                onValueChange = { category = it },
-                label = { Text("Category") },
-                placeholder = { Text("Select category") },
-                trailingIcon = {
-                    Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = null)
-                },
-                shape = RoundedCornerShape(12.dp),
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary,
-                    cursorColor = PrimaryBlue,
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // Category Selection Dropdown
+            ExposedDropdownMenuBox(
+                expanded = categoryExpanded,
+                onExpandedChange = { categoryExpanded = !categoryExpanded }
+            ) {
+                OutlinedTextField(
+                    value = category,
+                    onValueChange = {},
+                    readOnly = true,
+                    label = { Text("Category *") },
+                    placeholder = { Text("Select category") },
+                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = categoryExpanded) },
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled = true),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = PrimaryBlue,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    )
                 )
-            )
+
+                ExposedDropdownMenu(
+                    expanded = categoryExpanded,
+                    onDismissRequest = { categoryExpanded = false }
+                ) {
+                    categories.forEach { cat ->
+                        DropdownMenuItem(
+                            text = { Text(cat, fontSize = 14.sp) },
+                            onClick = {
+                                category = cat
+                                categoryExpanded = false
+                            }
+                        )
+                    }
+                }
+            }
 
             Spacer(modifier = Modifier.height(14.dp))
 
@@ -164,9 +200,9 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary,
-                    cursorColor = PrimaryBlue,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     )
@@ -182,9 +218,9 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary,
-                    cursorColor = PrimaryBlue,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     )
@@ -193,7 +229,7 @@ fun AddItemScreen(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            // Quantity Row
+            // Quantity & Unit Row
             Row(modifier = Modifier.fillMaxWidth()) {
                 OutlinedTextField(
                     value = quantity,
@@ -203,9 +239,9 @@ fun AddItemScreen(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier.weight(1f),
                     colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary,
-                    cursorColor = PrimaryBlue,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary,
+                        cursorColor = PrimaryBlue,
                         focusedContainerColor = MaterialTheme.colorScheme.surface,
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     )
@@ -213,21 +249,45 @@ fun AddItemScreen(
 
                 Spacer(modifier = Modifier.width(12.dp))
 
-                OutlinedTextField(
-                    value = unit,
-                    onValueChange = { unit = it },
-                    label = { Text("Unit") },
-                    placeholder = { Text("e.g. pcs") },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.weight(1f),
-                    colors = OutlinedTextFieldDefaults.colors(
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary,
-                    cursorColor = PrimaryBlue,
-                        focusedContainerColor = MaterialTheme.colorScheme.surface,
-                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                ExposedDropdownMenuBox(
+                    expanded = unitExpanded,
+                    onExpandedChange = { unitExpanded = !unitExpanded },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    OutlinedTextField(
+                        value = unit,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Unit") },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = unitExpanded) },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled = true),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = TextPrimary,
+                            unfocusedTextColor = TextPrimary,
+                            cursorColor = PrimaryBlue,
+                            focusedContainerColor = MaterialTheme.colorScheme.surface,
+                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        )
                     )
-                )
+
+                    ExposedDropdownMenu(
+                        expanded = unitExpanded,
+                        onDismissRequest = { unitExpanded = false }
+                    ) {
+                        units.forEach { u ->
+                            DropdownMenuItem(
+                                text = { Text(u, fontSize = 14.sp) },
+                                onClick = {
+                                    unit = u
+                                    unitExpanded = false
+                                }
+                            )
+                        }
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(14.dp))

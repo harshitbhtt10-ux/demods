@@ -319,6 +319,7 @@ private fun InventoryItemCard(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun EditItemDialog(
     item: InventoryItem,
@@ -332,6 +333,11 @@ private fun EditItemDialog(
     var quantity by remember { mutableStateOf(item.quantity.toString()) }
     var unit by remember { mutableStateOf(item.unit) }
 
+    var categoryExpanded by remember { mutableStateOf(false) }
+    val categories = remember {
+        listOf("Grocery", "Snacks", "Beverages", "Personal Care", "Household", "Health", "Dairy & Bakery", "General")
+    }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("Edit Item", fontWeight = FontWeight.Bold, fontSize = 18.sp) },
@@ -344,13 +350,40 @@ private fun EditItemDialog(
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.fillMaxWidth()
                 )
-                OutlinedTextField(
-                    value = category,
-                    onValueChange = { category = it },
-                    label = { Text("Category") },
-                    shape = RoundedCornerShape(10.dp),
-                    modifier = Modifier.fillMaxWidth()
-                )
+
+                // Category Dropdown
+                ExposedDropdownMenuBox(
+                    expanded = categoryExpanded,
+                    onExpandedChange = { categoryExpanded = !categoryExpanded }
+                ) {
+                    OutlinedTextField(
+                        value = category,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Category") },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = categoryExpanded) },
+                        shape = RoundedCornerShape(10.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled = true)
+                    )
+
+                    ExposedDropdownMenu(
+                        expanded = categoryExpanded,
+                        onDismissRequest = { categoryExpanded = false }
+                    ) {
+                        categories.forEach { cat ->
+                            DropdownMenuItem(
+                                text = { Text(cat) },
+                                onClick = {
+                                    category = cat
+                                    categoryExpanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedTextField(
                         value = sellingPrice,
