@@ -22,7 +22,15 @@ data class Strings(
     val addParty: String,
     val createBill: String,
     val selectLanguage: String,
-    val applyLanguage: String
+    val applyLanguage: String,
+    val businessSettings: String,
+    val backupAndSync: String,
+    val helpAndSupport: String,
+    val shareApp: String,
+    val darkMode: String,
+    val languageTitle: String,
+    val aboutDukaanSetu: String,
+    val logout: String
 )
 
 val EnglishStrings = Strings(
@@ -47,7 +55,15 @@ val EnglishStrings = Strings(
     addParty = "Add Party",
     createBill = "Create Bill",
     selectLanguage = "Select Language",
-    applyLanguage = "Apply Language"
+    applyLanguage = "Apply Language",
+    businessSettings = "Business Settings",
+    backupAndSync = "Backup & Sync",
+    helpAndSupport = "Help & Support",
+    shareApp = "Share App",
+    darkMode = "Dark Mode",
+    languageTitle = "Language",
+    aboutDukaanSetu = "About DukkanSetu",
+    logout = "Logout"
 )
 
 val HindiStrings = Strings(
@@ -72,7 +88,15 @@ val HindiStrings = Strings(
     addParty = "ग्राहक जोड़ें",
     createBill = "बिल बनाएं",
     selectLanguage = "भाषा चुनें",
-    applyLanguage = "भाषा लागू करें"
+    applyLanguage = "भाषा लागू करें",
+    businessSettings = "व्यापार सेटिंग्स",
+    backupAndSync = "बैकअप और सिंक",
+    helpAndSupport = "सहायता और सपोर्ट",
+    shareApp = "ऐप शेयर करें",
+    darkMode = "डार्क मोड",
+    languageTitle = "भाषा (Language)",
+    aboutDukaanSetu = "दुकानसेतु के बारे में",
+    logout = "लॉगआउट"
 )
 
 val PunjabiStrings = Strings(
@@ -97,7 +121,15 @@ val PunjabiStrings = Strings(
     addParty = "ਗਾਹਕ ਜੋੜੋ",
     createBill = "ਬਿਲ ਬਣਾਓ",
     selectLanguage = "ਭਾਸ਼ਾ ਚੁਣੋ",
-    applyLanguage = "ਭਾਸ਼ਾ ਲਾਗੂ ਕਰੋ"
+    applyLanguage = "ਭਾਸ਼ਾ ਲਾਗੂ ਕਰੋ",
+    businessSettings = "ਕਾਰੋਬਾਰੀ ਸੈਟਿੰਗਾਂ",
+    backupAndSync = "ਬੈਕਅੱਪ ਅਤੇ ਸਿੰਕ",
+    helpAndSupport = "ਮਦਦ ਅਤੇ ਸਹਾਇਤਾ",
+    shareApp = "ਐਪ ਸਾਂਝਾ ਕਰੋ",
+    darkMode = "ਡਾਰਕ ਮੋਡ",
+    languageTitle = "ਭਾਸ਼ਾ (Language)",
+    aboutDukaanSetu = "ਦੁਕਾਨਸੇਤੂ ਬਾਰੇ",
+    logout = "ਲੌਗਆਊਟ"
 )
 
 val BengaliStrings = Strings(
@@ -122,7 +154,15 @@ val BengaliStrings = Strings(
     addParty = "গ্রাহক যোগ করুন",
     createBill = "বিল তৈরি করুন",
     selectLanguage = "ভাষা নির্বাচন করুন",
-    applyLanguage = "ভাষা প্রয়োগ করুন"
+    applyLanguage = "ভাষা প্রয়োগ করুন",
+    businessSettings = "ব্যবসায়িক সেটিংস",
+    backupAndSync = "ব্যাকআপ ও সিঙ্ক",
+    helpAndSupport = "সাহায্য ও সহায়তা",
+    shareApp = "অ্যাপ শেয়ার করুন",
+    darkMode = "ডার্ক মোড",
+    languageTitle = "ভাষা (Language)",
+    aboutDukaanSetu = "দোকানসেতু সম্পর্কে",
+    logout = "লগ আউট"
 )
 
 val GujaratiStrings = Strings(
@@ -147,7 +187,15 @@ val GujaratiStrings = Strings(
     addParty = "ગ્રાહક ઉમેરો",
     createBill = "બિલ બનાવો",
     selectLanguage = "ભાષા પસંદ કરો",
-    applyLanguage = "ભાષા લાગુ કરો"
+    applyLanguage = "ભાષા લાગુ કરો",
+    businessSettings = "બિઝનેસ સેટિંગ્સ",
+    backupAndSync = "બેકઅપ અને સિંક",
+    helpAndSupport = "મદદ અને સપોર્ટ",
+    shareApp = "એપ્લિકેશન શેર કરો",
+    darkMode = "ડાર્ક મોડ",
+    languageTitle = "ભાષા (Language)",
+    aboutDukaanSetu = "દુકાનસેતુ વિશે",
+    logout = "લોગ આઉટ"
 )
 
 val MarathiStrings = Strings(
@@ -172,7 +220,15 @@ val MarathiStrings = Strings(
     addParty = "ग्राहक जोडा",
     createBill = "बिल तयार करा",
     selectLanguage = "भाषा निवडा",
-    applyLanguage = "भाषा लागू करा"
+    applyLanguage = "भाषा लागू करा",
+    businessSettings = "व्यवसाय सेटिंग्ज",
+    backupAndSync = "बॅकअप आणि सिंक",
+    helpAndSupport = "मदत आणि सपोर्ट",
+    shareApp = "अ‍ॅप शेअर करा",
+    darkMode = "डार्क मोड",
+    languageTitle = "भाषा (Language)",
+    aboutDukaanSetu = "दुकानसेतूबद्दल",
+    logout = "लॉगआउट"
 )
 
 val TamilStrings = Strings(
@@ -197,7 +253,15 @@ val TamilStrings = Strings(
     addParty = "வாடிக்கையாளர் சேர்",
     createBill = "ரசீது உருவாக்கவும்",
     selectLanguage = "மொழியைத் தேர்ந்தெடுக்கவும்",
-    applyLanguage = "மொழியைப் பயன்படுத்து"
+    applyLanguage = "மொழியைப் பயன்படுத்து",
+    businessSettings = "வணிக அமைப்புகள்",
+    backupAndSync = "பேக்கப் & ஒத்திசைவு",
+    helpAndSupport = "உதவி & ஆதரவு",
+    shareApp = "பகிரவும்",
+    darkMode = "டார்க் மோட்",
+    languageTitle = "மொழி (Language)",
+    aboutDukaanSetu = "பற்றி",
+    logout = "வெளியேறு"
 )
 
 val TeluguStrings = Strings(
@@ -222,7 +286,15 @@ val TeluguStrings = Strings(
     addParty = "ఖాతాదారుని జోడించు",
     createBill = "బిల్లు తయారు చేయి",
     selectLanguage = "భాషను ఎంచుకోండి",
-    applyLanguage = "భాషను వర్తింపజేయండి"
+    applyLanguage = "భాషను వర్తింపజేయండి",
+    businessSettings = "బిజినెస్ సెట్టింగ్‌లు",
+    backupAndSync = "బ్యాకప్ & సింక్",
+    helpAndSupport = "సహాయం & సపోర్ట్",
+    shareApp = "యాప్‌ని షేర్ చేయండి",
+    darkMode = "డార్క్ మోడ్",
+    languageTitle = "భాష (Language)",
+    aboutDukaanSetu = "గురించి",
+    logout = "లాగ్ అవుట్"
 )
 
 fun getAppStrings(code: String): Strings {

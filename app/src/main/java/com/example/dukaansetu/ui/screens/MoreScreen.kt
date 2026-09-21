@@ -30,10 +30,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 @Composable
 fun MoreScreen(
+    viewModel: ShopViewModel,
     onNavigateToAi: () -> Unit,
     onLogout: () -> Unit,
     onNavigateToProfile: () -> Unit = {},
@@ -45,6 +48,8 @@ fun MoreScreen(
 ) {
     val context = LocalContext.current
     var isDarkMode by remember { mutableStateOf(false) }
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
 
     Column(
         modifier = Modifier
@@ -60,7 +65,7 @@ fun MoreScreen(
                 .padding(horizontal = 16.dp, vertical = 14.dp)
         ) {
             Text(
-                text = "More",
+                text = s.more,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -136,7 +141,7 @@ fun MoreScreen(
             ) {
                 Column {
                     SettingsRowItem(
-                        title = "Ask My Shop AI",
+                        title = s.askMyShopAi,
                         subtitle = "Your AI Business Assistant",
                         icon = Icons.Default.SmartToy,
                         onClick = onNavigateToAi
@@ -144,7 +149,7 @@ fun MoreScreen(
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "Business Settings",
+                        title = s.businessSettings,
                         subtitle = "GST, Shop Details, Categories",
                         icon = Icons.Default.Settings,
                         onClick = onNavigateToBusinessSettings
@@ -152,7 +157,7 @@ fun MoreScreen(
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "Backup & Sync",
+                        title = s.backupAndSync,
                         subtitle = "Keep your data safe",
                         icon = Icons.Default.CloudUpload,
                         onClick = onNavigateToBackupSync
@@ -160,7 +165,7 @@ fun MoreScreen(
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "Help & Support",
+                        title = s.helpAndSupport,
                         subtitle = "FAQ, Contact Us",
                         icon = Icons.Default.HelpOutline,
                         onClick = onNavigateToHelpSupport
@@ -168,7 +173,7 @@ fun MoreScreen(
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "Share App",
+                        title = s.shareApp,
                         subtitle = "Invite other shopkeepers & retailers",
                         icon = Icons.Default.Share,
                         onClick = {
@@ -209,7 +214,7 @@ fun MoreScreen(
                             }
                             Spacer(modifier = Modifier.width(12.dp))
                             Text(
-                                text = "Dark Mode",
+                                text = s.darkMode,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = TextPrimary
@@ -225,15 +230,15 @@ fun MoreScreen(
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "Language",
-                        subtitle = "English (India)",
+                        title = s.languageTitle,
+                        subtitle = currentLang.uppercase(),
                         icon = Icons.Default.Language,
                         onClick = onNavigateToLanguage
                     )
                     HorizontalDivider(color = Color(0xFFF1F5F9))
 
                     SettingsRowItem(
-                        title = "About DukkanSetu",
+                        title = s.aboutDukaanSetu,
                         subtitle = "Version 1.0.0",
                         icon = Icons.Default.Info,
                         onClick = onNavigateToAboutApp
@@ -253,7 +258,7 @@ fun MoreScreen(
                     .height(48.dp)
             ) {
                 Text(
-                    text = "Logout",
+                    text = s.logout,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = RedDanger

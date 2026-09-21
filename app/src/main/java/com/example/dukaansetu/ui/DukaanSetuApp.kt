@@ -109,6 +109,7 @@ fun DukaanSetuApp() {
 
                             BottomTab.MORE -> {
                                 MoreScreen(
+                                    viewModel = viewModel,
                                     onNavigateToAi = { currentScreen = Screen.AiAssistant },
                                     onLogout = { currentScreen = Screen.Login },
                                     onNavigateToProfile = { currentScreen = Screen.UserProfile },
