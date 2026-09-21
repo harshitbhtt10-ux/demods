@@ -5,7 +5,9 @@ import com.example.dukaansetu.data.model.BillRecord
 import com.example.dukaansetu.data.model.InventoryItem
 import com.example.dukaansetu.data.model.PartyCustomer
 import com.example.dukaansetu.data.repository.ShopRepository
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class ShopViewModel : ViewModel() {
     private val repository = ShopRepository()
@@ -14,6 +16,13 @@ class ShopViewModel : ViewModel() {
     val parties: StateFlow<List<PartyCustomer>> = repository.parties
     val bills: StateFlow<List<BillRecord>> = repository.bills
     val chatMessages = repository.chatMessages
+
+    private val _currentLanguage = MutableStateFlow("en")
+    val currentLanguage: StateFlow<String> = _currentLanguage.asStateFlow()
+
+    fun setLanguage(code: String) {
+        _currentLanguage.value = code
+    }
 
     fun addItem(
         name: String,

@@ -16,14 +16,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.ui.components.DukaanSetuTopBar
 import com.example.dukaansetu.ui.theme.*
+import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
 data class AppLanguage(val code: String, val name: String, val nativeName: String)
 
 @Composable
 fun LanguageSelectScreen(
+    viewModel: ShopViewModel,
     onBackClick: () -> Unit
 ) {
-    var selectedLang by remember { mutableStateOf("en") }
+    val activeLangCode by viewModel.currentLanguage.collectAsState()
+    var selectedLang by remember { mutableStateOf(activeLangCode) }
 
     val languages = remember {
         listOf(
@@ -105,7 +108,10 @@ fun LanguageSelectScreen(
                     .padding(16.dp)
             ) {
                 Button(
-                    onClick = onBackClick,
+                    onClick = {
+                        viewModel.setLanguage(selectedLang)
+                        onBackClick()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = NavyPrimary),
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier

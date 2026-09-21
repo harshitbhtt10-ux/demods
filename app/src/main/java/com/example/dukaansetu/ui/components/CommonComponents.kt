@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dukaansetu.R
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.navigation.BottomTab
 import com.example.dukaansetu.ui.theme.*
 
@@ -128,8 +129,11 @@ fun DukaanSetuTopBar(
 @Composable
 fun DukaanSetuBottomBar(
     currentTab: BottomTab,
+    langCode: String = "en",
     onTabSelected: (BottomTab) -> Unit
 ) {
+    val strings = getAppStrings(langCode)
+
     Surface(
         color = NavyPrimary,
         tonalElevation = 8.dp
@@ -144,6 +148,7 @@ fun DukaanSetuBottomBar(
         ) {
             BottomTabItem(
                 tab = BottomTab.HOME,
+                titleOverride = strings.home,
                 isSelected = currentTab == BottomTab.HOME,
                 icon = Icons.Outlined.Home,
                 selectedIcon = Icons.Filled.Home,
@@ -151,6 +156,7 @@ fun DukaanSetuBottomBar(
             )
             BottomTabItem(
                 tab = BottomTab.ITEMS,
+                titleOverride = strings.items,
                 isSelected = currentTab == BottomTab.ITEMS,
                 icon = Icons.Outlined.Inventory2,
                 selectedIcon = Icons.Filled.Inventory2,
@@ -158,6 +164,7 @@ fun DukaanSetuBottomBar(
             )
             BottomTabItem(
                 tab = BottomTab.BILLS,
+                titleOverride = strings.bills,
                 isSelected = currentTab == BottomTab.BILLS,
                 icon = Icons.Outlined.ReceiptLong,
                 selectedIcon = Icons.Filled.ReceiptLong,
@@ -165,6 +172,7 @@ fun DukaanSetuBottomBar(
             )
             BottomTabItem(
                 tab = BottomTab.PARTIES,
+                titleOverride = strings.parties,
                 isSelected = currentTab == BottomTab.PARTIES,
                 icon = Icons.Outlined.People,
                 selectedIcon = Icons.Filled.People,
@@ -172,6 +180,7 @@ fun DukaanSetuBottomBar(
             )
             BottomTabItem(
                 tab = BottomTab.MORE,
+                titleOverride = strings.more,
                 isSelected = currentTab == BottomTab.MORE,
                 icon = Icons.Outlined.Menu,
                 selectedIcon = Icons.Filled.Menu,
@@ -184,11 +193,13 @@ fun DukaanSetuBottomBar(
 @Composable
 private fun BottomTabItem(
     tab: BottomTab,
+    titleOverride: String? = null,
     isSelected: Boolean,
     icon: ImageVector,
     selectedIcon: ImageVector,
     onClick: () -> Unit
 ) {
+    val displayTitle = titleOverride ?: tab.title
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -198,13 +209,13 @@ private fun BottomTabItem(
     ) {
         Icon(
             imageVector = if (isSelected) selectedIcon else icon,
-            contentDescription = tab.title,
+            contentDescription = displayTitle,
             tint = if (isSelected) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),
             modifier = Modifier.size(22.dp)
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(
-            text = tab.title,
+            text = displayTitle,
             fontSize = 11.sp,
             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
             color = if (isSelected) MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f)

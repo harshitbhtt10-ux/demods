@@ -24,6 +24,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.example.dukaansetu.ui.components.DukaanSetuLogo
 import com.example.dukaansetu.ui.components.StatCard
+import com.example.dukaansetu.ui.i18n.getAppStrings
 import com.example.dukaansetu.ui.theme.*
 import com.example.dukaansetu.ui.viewmodel.ShopViewModel
 
@@ -44,6 +45,8 @@ fun HomeScreen(
     val inventory by viewModel.inventory.collectAsState()
     val parties by viewModel.parties.collectAsState()
     val bills by viewModel.bills.collectAsState()
+    val currentLang by viewModel.currentLanguage.collectAsState()
+    val s = getAppStrings(currentLang)
     
     val todaySales = bills.filter { it.date.contains("Today") }.sumOf { it.amount }
     val totalPending = parties.sumOf { it.pendingAmount }
@@ -150,7 +153,7 @@ fun HomeScreen(
             // Stat Cards Grid
             Row(modifier = Modifier.fillMaxWidth()) {
                 StatCard(
-                    title = "Today's Sales",
+                    title = s.todaysSales,
                     value = "₹ ${todaySales.toInt()}",
                     changeText = "↑ 12%",
                     isPositive = true,
@@ -162,7 +165,7 @@ fun HomeScreen(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 StatCard(
-                    title = "Purchases",
+                    title = s.purchases,
                     value = "₹ 2,480",
                     changeText = "↓ 8%",
                     isPositive = false,
@@ -178,7 +181,7 @@ fun HomeScreen(
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 StatCard(
-                    title = "Total Profit",
+                    title = s.totalProfit,
                     value = "₹ 12,540",
                     changeText = "↑ 15%",
                     isPositive = true,
@@ -190,7 +193,7 @@ fun HomeScreen(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 StatCard(
-                    title = "Pending Udhaar",
+                    title = s.pendingUdhaar,
                     value = "₹ ${totalPending.toInt()}",
                     changeText = "${parties.filter { it.pendingAmount > 0 }.size} customers",
                     isPositive = false,
@@ -270,7 +273,7 @@ fun HomeScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "Quick Actions",
+                        text = s.quickActions,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary
@@ -283,17 +286,17 @@ fun HomeScreen(
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         QuickActionButton(
-                            title = "Scan Receipt\n(OCR)",
+                            title = s.scanReceipt,
                             icon = Icons.Outlined.CenterFocusWeak,
                             onClick = onNavigateToAddItem
                         )
                         QuickActionButton(
-                            title = "Voice Count",
+                            title = s.voiceCount,
                             icon = Icons.Outlined.Mic,
                             onClick = onNavigateToAi
                         )
                         QuickActionButton(
-                            title = "Items",
+                            title = s.items,
                             icon = Icons.Outlined.Inventory2,
                             onClick = onNavigateToItems
                         )
@@ -306,17 +309,17 @@ fun HomeScreen(
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         QuickActionButton(
-                            title = "Udhaar Khata",
+                            title = s.parties,
                             icon = Icons.Outlined.AccountBalance,
                             onClick = onNavigateToParties
                         )
                         QuickActionButton(
-                            title = "Reports",
+                            title = s.reports,
                             icon = Icons.Outlined.BarChart,
                             onClick = onNavigateToReports
                         )
                         QuickActionButton(
-                            title = "Dead Stock",
+                            title = s.deadStock,
                             icon = Icons.Outlined.Warning,
                             onClick = onNavigateToDeadStock
                         )
@@ -329,17 +332,17 @@ fun HomeScreen(
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         QuickActionButton(
-                            title = "Expiry Log",
+                            title = s.expiryLog,
                             icon = Icons.Outlined.Timer,
                             onClick = onNavigateToExpiry
                         )
                         QuickActionButton(
-                            title = "Add Item",
+                            title = s.addItem,
                             icon = Icons.Outlined.AddCircle,
                             onClick = onNavigateToAddItem
                         )
                         QuickActionButton(
-                            title = "More",
+                            title = s.more,
                             icon = Icons.Outlined.GridView,
                             onClick = onNavigateToMore
                         )

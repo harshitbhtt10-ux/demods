@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun DukaanSetuApp() {
     val viewModel: ShopViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    val currentLang by viewModel.currentLanguage.collectAsState()
     
     var currentScreen by remember { mutableStateOf<Screen>(Screen.Splash) }
     var currentBottomTab by remember { mutableStateOf(BottomTab.HOME) }
@@ -30,6 +31,7 @@ fun DukaanSetuApp() {
             if (currentScreen == Screen.Main) {
                 DukaanSetuBottomBar(
                     currentTab = currentBottomTab,
+                    langCode = currentLang,
                     onTabSelected = { selectedTab ->
                         currentBottomTab = selectedTab
                     }
@@ -153,6 +155,7 @@ fun DukaanSetuApp() {
 
                     Screen.LanguageSelect -> {
                         LanguageSelectScreen(
+                            viewModel = viewModel,
                             onBackClick = { currentScreen = Screen.Main }
                         )
                     }
